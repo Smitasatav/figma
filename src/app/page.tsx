@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Navbar from "@/components/navbar";
+import { taskDef } from "@/components/types";
 
 export default function Home() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<taskDef[]>([]);
+
   useEffect(() => {
     if (localStorage.tasks) {
       setTasks(JSON.parse(localStorage.tasks));

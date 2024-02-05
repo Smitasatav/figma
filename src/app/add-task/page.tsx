@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/navbar";
 import "./add.css";
+import { taskDef } from "@/components/types";
 
 export default function AddTask() {
   const [detail, setDetail] = useState("");
   const [title, setTitle] = useState("");
   const save = (event: React.SyntheticEvent) => {
-    let task = { detail, title };
+    let task: taskDef = { detail, title };
     event.preventDefault();
     let tasks = [];
     if (localStorage.tasks) {
