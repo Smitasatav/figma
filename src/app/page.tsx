@@ -5,7 +5,6 @@ import Link from "next/link";
 import Navbar from "@/components/navbar";
 import { taskDef } from "@/components/types";
 import { saveTasksToLocal, getTaskFromLocal } from "@/components";
-// import * as calc from "@/components/cals";
 
 export default function Home() {
   const [tasks, setTasks] = useState<taskDef[]>([]);
@@ -36,7 +35,7 @@ export default function Home() {
   return (
     <main>
       <Navbar title="Todo App" rightIcon="calender" />
-      {/* <h1>{calc.addition(5, 2)}</h1> */}
+
       <div className="todo-center-container">
         <div className="todo-list-container">
           {tasks.map((task, i) => (
@@ -46,7 +45,9 @@ export default function Home() {
                 <div className="sub-title">{task.detail}</div>
               </div>
               <div className="todo-bar-right-section">
-                <img src="./icons/pencil.svg" />
+                <Link href={`/edit-task/${i}`}>
+                  <img src="./icons/pencil.svg" />
+                </Link>
                 <img src="./icons/trash.svg" onClick={() => deleteTask(i)} />
                 <img
                   src="./icons/check-circle.svg"
