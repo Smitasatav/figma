@@ -15,7 +15,6 @@ export default function Form({ submitBtnLabel, onSave, task }: props) {
   const [detail, setDetail] = useState("");
   const [title, setTitle] = useState("");
   const router = useRouter();
-  const condition = submitBtnLabel !== undefined;
 
   const save = (event: React.SyntheticEvent) => {
     let task: taskDef = { detail, title };

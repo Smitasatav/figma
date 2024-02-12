@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Navbar from "@/components/navbar";
 import "./add.css";
 import Form from "@/components/taskform";
 import { taskDef } from "@/components/types";
 import { saveTasksToLocal, getTaskFromLocal } from "@/components";
+import Spinner from "@/components/Spinner";
+import Navbar from "@/components/navbar";
 
 export default function AddTask() {
   const save = (task: taskDef) => {
@@ -19,6 +20,7 @@ export default function AddTask() {
     <main>
       <Navbar title="Add Task" backBtn={true} />
       <Form submitBtnLabel="ADD" onSave={save} />
+      <Spinner />
     </main>
   );
 }
