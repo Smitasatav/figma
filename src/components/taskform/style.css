@@ -12,8 +12,6 @@
   font-style: normal;
   font-weight: 400;
   padding-top: 4px;
-  /*  */
-  margin-left: 18px;
 }
 
 .add-main-container-text-detail {
@@ -23,20 +21,14 @@
   font-style: normal;
   font-weight: 400;
   padding-top: 45px;
-  /*  */
-  margin-left: 18px;
 }
 
-#title,
-#detail {
-  /* width: 100%; */
+.input {
+  width: 100%;
   background: #b2b4d7;
   border: none;
   height: 30px;
   margin-top: 8px;
-  width: 91%;
-  /*  */
-  margin-left: 18px;
 }
 
 .button-container {
@@ -58,12 +50,9 @@
   font-family: sans-serif;
   font-style: normal;
   line-height: normal;
-  font-size: 17px;
-  /* margin-right: 17px;
-  margin-left: 13px; */
+  font-size: 15px;
+  margin-right: 17px;
+  margin-left: 13px;
   text-decoration: none;
   cursor: pointer;
-  /*  */
-  margin-right: 24px;
-  margin-left: 27px;
 }

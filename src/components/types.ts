@@ -1,8 +1,7 @@
 export interface taskDef {
-    title: string;
-    detail: string;
-    scheduled?: boolean;
-    updateTask?: boolean
-  }
-
-  
+  _id?: string;
+  title: string;
+  detail: string;
+  scheduled?: boolean;
+  updateTask?: boolean;
+}

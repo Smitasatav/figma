@@ -2,7 +2,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
-import "./edit.css";
 import Form from "@/components/taskform";
 import { taskDef } from "@/components/types";
 import { getTaskFromLocal, saveTasksToLocal } from "@/components";
