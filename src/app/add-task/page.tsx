@@ -1,20 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import axios from "axios";
-import Form from "@/components/taskform";
+import axios from "@/components/api";
+import Form from "@/components/TaskForm";
 import { taskDef } from "@/components/types";
-import { saveTasksToLocal, getTaskFromLocal } from "@/components";
 import Spinner from "@/components/Spinner";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 
 export default function AddTask() {
   const [loading, setLoading] = useState(false);
   const save = async (task: taskDef) => {
     setLoading(true);
-    const res = await axios.post(
-      "https://crudcrud.com/api/78b95180ef784e6e8079556bef396f7c/task",
-      task
-    );
+    const res = await axios.post("/tasks", task);
 
     setLoading(false);
   };

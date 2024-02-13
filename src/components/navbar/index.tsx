@@ -1,4 +1,5 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 interface props {
@@ -8,6 +9,20 @@ interface props {
 }
 
 export default function Navbar({ title, backBtn, rightIcon }: props) {
+  // const [currentTime, setCurrentTime] = useState(new Date());
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCurrentTime(new Date());
+  //   }, 1000);
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
+  // const formattedTime = currentTime.toLocaleTimeString([], {
+  //   hour: "2-digit",
+  //   minute: "2-digit",
+  //   hour12: true,
+  // });
+
   return (
     <div className="app-bar">
       <div className="status-bar">
