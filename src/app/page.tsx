@@ -10,16 +10,26 @@ export default function Home() {
   const [tasks, setTasks] = useState<taskDef[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const deleteTask = async (task: taskDef) => {
+  const fetchData = async () => {
     setLoading(true);
+    try {
+      const res = await axios.get("/tasks");
+      setTasks(res.data.items);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
+    setLoading(false);
+  };
+
+  const deleteTask = async (task: taskDef) => {
     if (task.scheduled) {
       alert(`this task ${task.title} cannot be deleted`);
       return;
     }
     try {
+      setLoading(true);
       await axios.delete(`/tasks/${task._uuid}`);
-      const res = await axios.get("/tasks");
-      setTasks(res.data.items);
+      fetchData();
     } catch (error) {
       console.error("Error deleting task:", error);
     }
@@ -28,22 +38,13 @@ export default function Home() {
 
   const scheduledTask = async (task: taskDef) => {
     setLoading(true);
-    let task2 = Object.assign({}, task);
-    task2.scheduled = !task2.scheduled;
-    delete task2._uuid;
-    await axios.put(`/tasks/${task._uuid}`, task2);
-    let res = await axios.get(`/tasks`);
-    setTasks(res.data.items);
+    await axios.put(`/tasks/${task._uuid}`, { scheduled: !task.scheduled });
+    await fetchData();
     setLoading(false);
   };
 
   useEffect(() => {
-    (async () => {
-      setLoading(true);
-      const res = await axios.get("/tasks");
-      setTasks(res.data.items);
-      setLoading(false);
-    })();
+    fetchData();
   }, []);
 
   return (

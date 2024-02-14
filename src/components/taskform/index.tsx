@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { taskDef } from "@/components/types";
 import "./style.css";
 
@@ -32,8 +31,8 @@ export default function Form({ submitBtnLabel, onSave, task }: props) {
   return (
     <main>
       <form onSubmit={save}>
-        <div className="add-page-main-container">
-          <div className="add-main-container-text">title</div>
+        <div className="page-main-container">
+          <div className="main-container-text">title</div>
           <div>
             <input
               type="text"
@@ -44,7 +43,7 @@ export default function Form({ submitBtnLabel, onSave, task }: props) {
               value={title}
             />
           </div>
-          <div className="add-main-container-text-detail">detail</div>
+          <div className="main-container-text-detail">detail</div>
           <div>
             <input
               type="text"

@@ -1,34 +1,43 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Form from "@/components/TaskForm";
 import { taskDef } from "@/components/types";
-import { getTaskFromLocal, saveTasksToLocal } from "@/components";
 import { useParams } from "next/navigation";
+import Spinner from "@/components/Spinner";
+import axios from "@/components/api";
 
 export default function EditTask() {
+  const [loading, setLoading] = useState(false);
   const [task, setTask] = useState<taskDef>({ title: "", detail: "" });
-  const [tasks, setTasks] = useState<taskDef[]>([]);
+  const router = useRouter();
 
   let { id } = useParams();
 
-  let save = (task: taskDef) => {
-    // tasks[id].title = task.title;
-    // tasks[id].detail = task.detail;
-    // saveTasksToLocal(tasks);
+  let fetchData = async () => {
+    setLoading(true);
+    let res = await axios.get(`/tasks/${id}`);
+    setTask(res.data);
+    setLoading(false);
   };
+
+  let save = async (task: taskDef) => {
+    setLoading(true);
+    await axios.put(`/tasks/${id}`, task);
+    setLoading(false);
+    router.push("/");
+  };
+
   useEffect(() => {
-    // if (localStorage.tasks) {
-    //   let tasks2 = getTaskFromLocal();
-    //   setTasks(tasks2);
-    //   setTask(tasks2[id]);
-    // }
+    fetchData();
   }, [id]);
   return (
     <main>
       <Navbar title="Edit Task" backBtn={true} />
       <Form submitBtnLabel="UPDATE" onSave={save} task={task} />
+      {loading && <Spinner />}
     </main>
   );
 }
