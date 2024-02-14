@@ -17,9 +17,9 @@ export default function Home() {
       return;
     }
     try {
-      await axios.delete(`/tasks/${task._id}`);
+      await axios.delete(`/tasks/${task._uuid}`);
       const res = await axios.get("/tasks");
-      setTasks(res.data);
+      setTasks(res.data.items);
     } catch (error) {
       console.error("Error deleting task:", error);
     }
@@ -30,10 +30,10 @@ export default function Home() {
     setLoading(true);
     let task2 = Object.assign({}, task);
     task2.scheduled = !task2.scheduled;
-    delete task2._id;
-    await axios.put(`/tasks/${task._id}`, task2);
+    delete task2._uuid;
+    await axios.put(`/tasks/${task._uuid}`, task2);
     let res = await axios.get(`/tasks`);
-    setTasks(res.data);
+    setTasks(res.data.items);
     setLoading(false);
   };
 
@@ -41,7 +41,7 @@ export default function Home() {
     (async () => {
       setLoading(true);
       const res = await axios.get("/tasks");
-      setTasks(res.data);
+      setTasks(res.data.items);
       setLoading(false);
     })();
   }, []);
@@ -60,7 +60,7 @@ export default function Home() {
                   <div className="sub-title">{task.detail}</div>
                 </div>
                 <div className="todo-bar-right-section">
-                  <Link href={`/edit-task/${task._id}`}>
+                  <Link href={`/edit-task/${task._uuid}`}>
                     <img src="./icons/pencil.svg" />
                   </Link>
                   <img

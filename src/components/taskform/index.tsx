@@ -15,13 +15,12 @@ interface props {
 export default function Form({ submitBtnLabel, onSave, task }: props) {
   const [detail, setDetail] = useState("");
   const [title, setTitle] = useState("");
-  const router = useRouter();
+  // const router = useRouter();
 
   const save = (event: React.SyntheticEvent) => {
     let task: taskDef = { detail, title };
     event.preventDefault();
     onSave(task);
-    router.push("/");
   };
 
   useEffect(() => {
