@@ -9,24 +9,24 @@ interface props {
 }
 
 export default function Navbar({ title, backBtn, rightIcon }: props) {
-  // const [currentTime, setCurrentTime] = useState(new Date());
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setCurrentTime(new Date());
-  //   }, 1000);
-  //   return () => clearInterval(intervalId);
-  // }, []);
+  const [currentTime, setCurrentTime] = useState(new Date());
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
-  // const formattedTime = currentTime.toLocaleTimeString([], {
-  //   hour: "2-digit",
-  //   minute: "2-digit",
-  //   hour12: true,
-  // });
+  const formattedTime = currentTime.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
 
   return (
     <div className="app-bar">
       <div className="status-bar">
-        <div className="left-section">9:41</div>
+        <div className="left-section">{formattedTime}</div>
         <div className="right-section">
           <img src="/icons/network-signal.svg" />
           <img src="/icons/wifi-signal.svg" />
