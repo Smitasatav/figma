@@ -17,7 +17,7 @@ export default function Navbar({ title, backBtn, rightIcon }: props) {
     return () => clearInterval(intervalId);
   }, []);
 
-  const formattedTime = currentTime.toLocaleTimeString([], {
+  const formattedTime = currentTime.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
