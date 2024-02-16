@@ -39,20 +39,26 @@
 
 .btn {
   display: flex;
-  flex: 1;
-  justify-content: flex-start;
+  flex: 0.45;
+  align-items: center;
+  justify-content: center;
+  /* justify-content: flex-start; */
   border-radius: 15px;
   background: #9395d3;
   border: none;
-  width: 100%;
+  /* width: 100%; */
   padding: 15px;
+
+  /* margin-right: 17px;
+  margin-left: 13px; */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-text {
   color: #fff;
   font-family: sans-serif;
   font-style: normal;
   line-height: normal;
   font-size: 15px;
-  margin-right: 17px;
-  margin-left: 13px;
-  text-decoration: none;
-  cursor: pointer;
 }

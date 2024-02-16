@@ -55,9 +55,11 @@ export default function Form({ submitBtnLabel, onSave, task }: props) {
             />
           </div>
           <div className="button-container">
-            <button className="btn">{submitBtnLabel}</button>
+            <button className="btn">
+              <span className="button-text">{submitBtnLabel}</span>
+            </button>
             <Link href="/" className="btn">
-              CANCEL
+              <span className="button-text">CANCEL</span>
             </Link>
           </div>
         </div>

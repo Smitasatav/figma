@@ -48,7 +48,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
+    <main className="container">
       <Navbar title="Todo App" rightIcon="calender" />
       {loading && <Spinner />}
       {!loading && (
