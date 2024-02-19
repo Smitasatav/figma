@@ -58,7 +58,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 60px;
-  margin-left: 11px;
+  /* margin-left: 11px; */
 }
 .title-right-section {
   justify-content: flex-end;

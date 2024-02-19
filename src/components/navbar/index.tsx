@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import "./style.css";
 
 interface props {
@@ -35,7 +36,7 @@ export default function Navbar({ title, backBtn, rightIcon }: props) {
       </div>
       <div className="todo-page-title-bar">
         <div className="title-left-section">
-          {backBtn && <img src="/icons/turn-back.svg" />}
+          {backBtn && <img src="/icons/turn-back.svg"/>}
           <div className="app-name">{title}</div>
         </div>
         <div className="title-right-section">
