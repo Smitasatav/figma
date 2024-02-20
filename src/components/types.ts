@@ -1,7 +1,6 @@
 export interface taskDef {
-  _uuid?: string;
-  title: string;
-  detail: string;
-  scheduled?: boolean;
-  updateTask?: boolean;
+  name: string;
+  age: string;
+  gender: string;
+  country: string;
 }
