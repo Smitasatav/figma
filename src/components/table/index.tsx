@@ -26,6 +26,7 @@ export default function Table() {
         <table className="table mt-3">
           <thead>
             <tr>
+              <th scope="col">#ID</th>
               <th scope="col">Name</th>
               <th scope="col">Age</th>
               <th scope="col">Gender</th>
@@ -35,15 +36,16 @@ export default function Table() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
+            {users.map((user,index) => {
               return (
-                <tr key={user.name}>
+                <tr key={index}>
+                  <td>{(index+1)}</td>
                   <td>{user.name}</td>
                   <td>{user.age}</td>
                   <td>{user.gender}</td>
                   <td>{user.country}</td>
                   <td>
-                    <Link href="/edit_task">
+                    <Link href="/Edit-User">
                       <img src="./icons/pencil.svg" />
                     </Link>
                   </td>
