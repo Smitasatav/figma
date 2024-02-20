@@ -26,7 +26,9 @@ export default function Form({ submitBtnLable, onSave }: props) {
       <div className="container my-3">
         <form onSubmit={save}>
           <div className="row mb-3">
-            <label className="col-sm-2 col-form-label">Name</label>
+            <label className="col-sm-2 col-form-label">
+              <b>Name</b>
+            </label>
             <div className="col-sm-10">
               <input
                 type="text"
@@ -39,7 +41,9 @@ export default function Form({ submitBtnLable, onSave }: props) {
             </div>
           </div>
           <div className="row mb-3">
-            <label className="col-sm-2 col-form-label">Age</label>
+            <label className="col-sm-2 col-form-label">
+              <b>Age</b>
+            </label>
             <div className="col-sm-10">
               <input
                 type="number"
@@ -52,7 +56,9 @@ export default function Form({ submitBtnLable, onSave }: props) {
             </div>
           </div>
           <div className="row mb-3">
-            <label className="col-sm-2 col-form-label">Gender</label>
+            <label className="col-sm-2 col-form-label">
+              <b>Gender</b>
+            </label>
             <div className="col-sm-10">
               <div className="form-check">
                 <input
@@ -85,7 +91,7 @@ export default function Form({ submitBtnLable, onSave }: props) {
           </div>
           <div className="row mb-3">
             <label htmlFor="inputName" className="col-sm-2 col-form-label">
-              Country
+              <b>Country</b>
             </label>
             <div className="col-sm-10">
               <select
@@ -107,13 +113,13 @@ export default function Form({ submitBtnLable, onSave }: props) {
           </div>
           <div className="row justify-content-evenly">
             <div className="col-4 p-4">
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-outline-primary">
                 {submitBtnLable}
               </button>
             </div>
             <div className="col-4 p-4">
               <Link href="/">
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn btn-outline-primary">
                   CANCEL
                 </button>
               </Link>

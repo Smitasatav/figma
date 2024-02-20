@@ -17,10 +17,15 @@ export default function Table() {
   return (
     <main>
       <div className="container">
-        <h5 className="text-center mt-2"> Population List </h5>
+        <h5 className="text-center mt-2">
+          <b>
+            {" "}
+            <i> Population List </i>
+          </b>
+        </h5>
 
-        <table className="table mt-3">
-          <thead>
+        <table className="table mt-3 table-bordered">
+          <thead className="table">
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Age</th>
@@ -54,7 +59,7 @@ export default function Table() {
           </tbody>
         </table>
         <Link href="/Add-task">
-          <button className=" btn btn-primary " type="submit">
+          <button className=" btn btn-outline-primary " type="submit">
             Create
           </button>
         </Link>
