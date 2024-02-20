@@ -1,5 +1,5 @@
 export interface taskDef {
-  // _uuid?: string;
+  _uuid?: string;
   // updateTask?: boolean;
   name:string;
   age:string;

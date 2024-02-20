@@ -44,6 +44,7 @@
 }
 .title-left-section {
   justify-content: flex-start;
+  align-items: center;
   display: flex;
   flex: 1;
 }

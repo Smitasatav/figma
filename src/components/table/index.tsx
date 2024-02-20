@@ -1,10 +1,24 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { taskDef } from "../types";
+import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
 
 export default function Table() {
   const [users, setUsers] = useState<taskDef[]>([]);
+  const [loading,setLoading] = useState(false);
+
+  const deleteUser = async (user: taskDef) => {
+    try{
+      setLoading(true);
+      await axios.delete(`/users/${user._uuid}`)
+      let res=await axios.get("/users");
+      setUsers(res.data.items);
+      setLoading(false);
+    }catch(error){
+      console.log("Error while deleting the user", error);
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,6 +32,7 @@ export default function Table() {
     <main>
       <div className="container">
         <h5 className="text-center mt-2"> Population List </h5>
+        {/* {loading && <Spinner/>} */}
         <Link href="/add_task">
           <button className=" btn btn-primary " type="submit">
             Create
@@ -51,30 +66,12 @@ export default function Table() {
                   </td>
                   <td>
                     <Link href="">
-                      <img src="./icons/trash.svg" />
+                      <img src="./icons/trash.svg" onClick={()=>deleteUser(user)} />
                     </Link>
                   </td>
                 </tr>
               );
             })}
-
-            {/* <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr> */}
           </tbody>
         </table>
       </div>

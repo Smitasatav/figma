@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { taskDef } from "@/components/types";
+import Spinner from "@/components/Spinner";
 
 interface props {
   submitBtnLable: string;
@@ -13,6 +14,7 @@ export default function Form({ submitBtnLable,onSave }: props) {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
+  const [loading,setLoading]=useState(false);
 
   const save = (event: React.SyntheticEvent) => {
     let user:taskDef = { name, age,gender,country};
@@ -25,7 +27,7 @@ export default function Form({ submitBtnLable,onSave }: props) {
   return (
     <main>
       <div className="container my-3">
-        <form onSubmit={save}>
+        {!loading && <form onSubmit={save}>
           <div className="row mb-3">
             <label className="col-sm-2 col-form-label">Name</label>
             <div className="col-sm-10">
@@ -129,8 +131,9 @@ export default function Form({ submitBtnLable,onSave }: props) {
               </Link>
             </div>
           </div>
-        </form>
+        </form>}
       </div>
+      {loading && <Spinner/>}
     </main>
   );
 }

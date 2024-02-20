@@ -36,7 +36,9 @@ export default function Navbar({ title, backBtn, rightIcon }: props) {
       </div>
       <div className="todo-page-title-bar">
         <div className="title-left-section">
+          <Link href="/">
           {backBtn && <img src="/icons/turn-back.svg"/>}
+          </Link>
           <div className="app-name">{title}</div>
         </div>
         <div className="title-right-section">
