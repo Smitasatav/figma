@@ -1,11 +1,25 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { taskDef } from "../types";
+import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
 import "./style.css";
 
 export default function Table() {
   const [users, setUsers] = useState<taskDef[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const deleteUser = async (user: taskDef) => {
+    try {
+      setLoading(true);
+      await axios.delete(`/users/${user._uuid}`);
+      let res = await axios.get("/users");
+      setUsers(res.data.items);
+      setLoading(false);
+    } catch (error) {
+      console.log("Error while deleting the user", error);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,14 +70,21 @@ export default function Table() {
                       ></button>
                       <ul className="dropdown-menu">
                         <li>
-                          <a className="dropdown-item" href="/Edit-task/">
+                          <a
+                            className="dropdown-item"
+                            href={`/Edit-User/${user._uuid}`}
+                          >
                             <img src="./icons/pencil.svg" alt="Edit" />
                             Edit
                           </a>
                         </li>
                         <li>
-                          <a className="dropdown-item">
-                            <img src="./icons/trash.svg" alt="Delete" />
+                          <a className="dropdown-item" href="">
+                            <img
+                              src="./icons/trash.svg"
+                              alt="Delete"
+                              onClick={() => deleteUser(user)}
+                            />
                             Delete
                           </a>
                         </li>
