@@ -20,8 +20,8 @@ export default function AddTask(){
       };
     return(
         <main>
-            <Navbar title="Add Task" backBtn={true}/>
-            <Form submitBtnLable="ADD" onSave={save}/>
+            <Navbar/>
+            <Form submitBtnLable="ADD" action="ADD USER" onSave={save}/>
         </main>
     )
 }

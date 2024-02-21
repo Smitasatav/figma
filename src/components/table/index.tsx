@@ -31,14 +31,14 @@ export default function Table() {
   return (
     <main>
       <div className="container">
-        <h5 className="text-center mt-2"> Population List </h5>
+        <h5 className="text-center mt-2 "> Population List </h5>
         {/* {loading && <Spinner/>} */}
         <Link href="/add_task">
           <button className=" btn btn-primary " type="submit">
             Create
           </button>
         </Link>
-        <table className="table mt-3">
+        <table className="table mt-3 ">
           <thead>
             <tr>
               <th scope="col">#ID</th>
@@ -60,7 +60,7 @@ export default function Table() {
                   <td>{user.gender}</td>
                   <td>{user.country}</td>
                   <td>
-                    <Link href="/Edit-User">
+                    <Link href={`/Edit-User/${user._uuid}`}>
                       <img src="./icons/pencil.svg" />
                     </Link>
                   </td>
