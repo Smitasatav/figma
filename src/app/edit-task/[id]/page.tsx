@@ -3,7 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import Form from "@/components/TaskForm";
+import Form from "@/components/taskform";
 import { taskDef } from "@/components/types";
 import { useParams } from "next/navigation";
 import Spinner from "@/components/Spinner";
