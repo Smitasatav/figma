@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { taskDef } from "../types";
 import axios from "@/components/api";
+import "./style.css";
 
 export default function Table() {
   const [users, setUsers] = useState<taskDef[]>([]);
@@ -27,31 +28,47 @@ export default function Table() {
         <table className="table mt-3 table-bordered">
           <thead className="table">
             <tr>
+              <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Age</th>
               <th scope="col">Gender</th>
               <th scope="col">Country</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
+              <th scope="col"> </th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
+            {users.map((user, index) => {
               return (
-                <tr key={user.name}>
+                <tr key={index}>
+                  <td>{index + 1}</td>
                   <td>{user.name}</td>
                   <td>{user.age}</td>
                   <td>{user.gender}</td>
                   <td>{user.country}</td>
                   <td>
-                    <Link href="/Edit-task">
-                      <img src="./icons/pencil.svg" />
-                    </Link>
-                  </td>
-                  <td>
-                    <Link href="">
-                      <img src="./icons/trash.svg" />
-                    </Link>
+                    <div className="dropdown">
+                      <button
+                        className="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        // role="button"
+
+                        aria-expanded="false"
+                      ></button>
+                      <ul className="dropdown-menu">
+                        <li>
+                          <a className="dropdown-item" href="/Edit-task/">
+                            <img src="./icons/pencil.svg" alt="Edit" />
+                            Edit
+                          </a>
+                        </li>
+                        <li>
+                          <a className="dropdown-item">
+                            <img src="./icons/trash.svg" alt="Delete" />
+                            Delete
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </td>
                 </tr>
               );

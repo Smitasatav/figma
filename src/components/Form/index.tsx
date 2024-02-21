@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { taskDef } from "@/components/types";
+import "./style.css";
 
 interface props {
   submitBtnLable: string;
