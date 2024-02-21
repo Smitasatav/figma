@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "@/components/api";
 import { useRouter } from "next/navigation";
-import Form from "@/components/TaskForm";
+import Form from "@/components/taskform";
 import { taskDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
 import Navbar from "@/components/Navbar";
@@ -17,6 +17,10 @@ export default function AddTask() {
     setLoading(false);
     router.push("/");
   };
+
+  useEffect(() => {
+    document.title = "Add Task";
+  }, []);
   return (
     <main>
       <Navbar title="Add Task" backBtn={true} />

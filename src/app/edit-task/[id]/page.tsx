@@ -31,6 +31,7 @@ export default function EditTask() {
   };
 
   useEffect(() => {
+    document.title = "Edit Data";
     fetchData();
   }, [id]);
   return (
