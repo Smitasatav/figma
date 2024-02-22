@@ -1,6 +1,6 @@
 "use client";
 import Form from "@/components/Form";
-import Navbar from "@/components/Navbar";
+// import Navbar from "@/components/Navbar";
 import axios from "@/components/api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ export default function editUser() {
   let { id } = useParams();
   const router = useRouter();
 
-  let getData = async () => {
+  let UserData = async () => {
     let res = await axios.get(`/users/${id}`);
     setUser(res.data);
   };
@@ -27,15 +27,14 @@ export default function editUser() {
     router.push("/");
   };
   useEffect(() => {
-    document.title = "Edit Data";
-    getData();
+    UserData();
   }, [id]);
   return (
     <main>
-      <Navbar />
+      {/* <Navbar /> */}
       <Form
         submitBtnLable="Update"
-        action="EDIT USER"
+        action=" EDIT YOUR TASK"
         onSave={save}
         user={user}
       />

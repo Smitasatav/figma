@@ -1,14 +1,8 @@
 export interface taskDef {
   _uuid?: string;
   name: string;
-  age: number;
+  age: string;
   gender: string;
   country: string;
-  user: string;
+  user?: string;
 }
-
-// enum Gender {
-//   Male = "male",
-//   Female = "female",
-//   Other = "other",
-// }

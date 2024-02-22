@@ -1,7 +1,6 @@
 .background-container {
   border: 2px solid #c8c7db;
   display: flex;
-  /* flex: 1; */
   flex-direction: column;
   background-color: #d6d7ef;
   height: 100vh;

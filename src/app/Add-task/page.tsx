@@ -24,7 +24,13 @@ export default function AddTask() {
 
   return (
     <main>
-      <Form submitBtnLable="ADD" action="ADD USER" onSave={save} />
+      {!loading ? (
+        <Form submitBtnLable="ADD" action="ADD USER" onSave={save} />
+      ) : (
+        <div className="main">
+          <Spinner />
+        </div>
+      )}
     </main>
   );
 }

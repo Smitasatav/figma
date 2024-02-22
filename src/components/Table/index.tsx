@@ -13,6 +13,7 @@ export default function Table() {
     try {
       setLoading(true);
       await axios.delete(`/users/${user._uuid}`);
+      console.log("smita");
       let res = await axios.get("/users");
       setUsers(res.data.items);
       setLoading(false);
@@ -64,29 +65,34 @@ export default function Table() {
                       <button
                         className="btn btn-secondary dropdown-toggle"
                         type="button"
-                        // role="button"
-
                         aria-expanded="false"
                       ></button>
                       <ul className="dropdown-menu">
                         <li>
                           <a
                             className="dropdown-item"
-                            href={`/Edit-User/${user._uuid}`}
+                            href={`/Edit-task/${user._uuid}`}
                           >
-                            <img src="./icons/pencil.svg" alt="Edit" />
+                            <img
+                              src="./icons/pencil.svg"
+                              alt="Edit"
+                              className="img"
+                            />
                             Edit
                           </a>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="">
+                          <button
+                            className="dropdown-item"
+                            onClick={() => deleteUser(user)}
+                          >
                             <img
                               src="./icons/trash.svg"
-                              alt="Delete"
-                              onClick={() => deleteUser(user)}
+                              alt="delete"
+                              className="img"
                             />
                             Delete
-                          </a>
+                          </button>
                         </li>
                       </ul>
                     </div>

@@ -122,25 +122,25 @@ export default function Form({ submitBtnLable, onSave, user, action }: props) {
                   onChange={(event) => setCountry(event.currentTarget.value)}
                 >
                   <option>Select</option>
-                  <option>Australia</option>
-                  <option>Bhutan</option>
-                  <option>Canada</option>
-                  <option>China</option>
-                  <option>France</option>
                   <option>India</option>
+                  <option>USA</option>
+                  <option>Denmark</option>
+                  <option>South Africa</option>
+                  <option>Germany</option>
+                  <option>Barcelona</option>
                 </select>
               </div>
             </div>
             <div className="row justify-content-evenly">
               <div className="col-4 p-4">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className=" btn btn-outline-primary ">
                   {submitBtnLable}
                 </button>
               </div>
               <div className="col-4 p-4">
                 <Link href="/">
-                  <button type="button" className="btn btn-primary">
-                    CANCEL
+                  <button type="button" className=" btn btn-outline-primary ">
+                    CANCLE
                   </button>
                 </Link>
               </div>
