@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
+import { countries, genders } from "./config.js";
 
 interface props {
   submitBtnLable: string;
@@ -37,7 +38,7 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
   return (
     <main>
       <div className="container my-3">
-          <h3 className="text-center">{title}</h3>
+        <h3 className="text-center">{title}</h3>
         {!loading && (
           <form onSubmit={save} className="mt-4">
             <div className="row mb-3">
@@ -73,55 +74,25 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
             <div className="row mb-3">
               <label className="col-sm-2 col-form-label">Gender</label>
               <div className="col-sm-10">
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="gender"
-                    required
-                    // id="gridRadios1"
-                    // defaultValue="option1"
-                    // defaultChecked=""
-                    value="Male"
-                    checked={gender === "Male"}
-                    onChange={(event) => setGender(event.currentTarget.value)}
-                  />
-                  <label className="form-check-label" htmlFor="gridRadios1">
-                    Male
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="gender"
-                    required
-                    // id="gridRadios2"
-                    // defaultValue="option2"
-                    value="Female"
-                    checked={gender === "Female"}
-                    onChange={(event) => setGender(event.currentTarget.value)}
-                  />
-                  <label className="form-check-label" htmlFor="gridRadios2">
-                    Female
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="gender"
-                    required
-                    // id="gridRadios2"
-                    // defaultValue="option2"
-                    value="Other"
-                    checked={gender === "Other"}
-                    onChange={(event) => setGender(event.currentTarget.value)}
-                  />
-                  <label className="form-check-label" htmlFor="gridRadios3">
-                    Others
-                  </label>
-                </div>
+                {genders.map((item, index) => (
+                  <div key={index} className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="gender"
+                      required
+                      value={item.value}
+                      checked={gender === item.value}
+                      onChange={(event) => setGender(event.currentTarget.value)}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor={`gender${index}`}
+                    >
+                      {item.label}
+                    </label>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="row mb-3">
@@ -137,13 +108,19 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
                   value={country}
                   onChange={(event) => setCountry(event.currentTarget.value)}
                 >
-                  <option>Select</option>
+                  {/* <option>Select</option>
                   <option>Australia</option>
                   <option>Bhutan</option>
                   <option>Canada</option>
                   <option>China</option>
                   <option>France</option>
-                  <option>India</option>
+                  <option>India</option> */}
+                  <option value="">Select</option>
+                  {countries.map((item, index) => (
+                    <option key={index} value={item.value}>
+                      {item.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -156,7 +133,7 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
               <div className="col-4 p-4">
                 <Link href="/">
                   <button type="button" className="btn btn-primary">
-                    CANCLE
+                    CANCEL
                   </button>
                 </Link>
               </div>

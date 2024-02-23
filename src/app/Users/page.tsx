@@ -5,6 +5,7 @@ import axios from "@/components/api";
 
 export default function getSummary() {
   const [users, setUsers] = useState([]);
+  const[data,setData]= useState([{country:"",count:0}]);
   const [countryData, setCountryData] = useState({
     country: "",
     male: 0,
