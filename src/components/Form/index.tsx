@@ -1,25 +1,31 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { taskDef } from "@/components/types";
+import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
-
+import { countries, genders } from "./config.js";
 interface props {
   submitBtnLable: string;
-  action?: string;
-  user?: taskDef;
-  onSave: (user: taskDef) => void;
+  title?: string;
+  user?: userDef;
+  onSave: (user: userDef) => void;
+  loading?: boolean;
 }
 
-export default function Form({ submitBtnLable, onSave, user, action }: props) {
+export default function Form({
+  submitBtnLable,
+  onSave,
+  user,
+  title,
+  loading,
+}: props) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const save = (event: React.SyntheticEvent) => {
-    let user: taskDef = { name, age, gender, country };
+    let user: userDef = { name, age, gender, country };
     event.preventDefault();
     // console.log(user)
     onSave(user);
@@ -37,7 +43,7 @@ export default function Form({ submitBtnLable, onSave, user, action }: props) {
   return (
     <main>
       <div className="container my-3">
-        <h3 className="text-center">{action}</h3>
+        <h3 className="text-center">{title}</h3>
         {!loading && (
           <form onSubmit={save} className="mt-4">
             <div className="row mb-3">
@@ -63,7 +69,6 @@ export default function Form({ submitBtnLable, onSave, user, action }: props) {
                   name="age"
                   className="form-control"
                   required
-                  // id="inputPassword3"
                   placeholder="Enter your age"
                   onChange={(event) => setAge(event.currentTarget.value)}
                   value={age}
@@ -73,39 +78,25 @@ export default function Form({ submitBtnLable, onSave, user, action }: props) {
             <div className="row mb-3">
               <label className="col-sm-2 col-form-label">Gender</label>
               <div className="col-sm-10">
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="gender"
-                    required
-                    // id="gridRadios1"
-                    // defaultValue="option1"
-                    // defaultChecked=""
-                    value="Male"
-                    checked={gender === "Male"}
-                    onChange={(event) => setGender(event.currentTarget.value)}
-                  />
-                  <label className="form-check-label" htmlFor="gridRadios1">
-                    Male
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="gender"
-                    required
-                    // id="gridRadios2"
-                    // defaultValue="option2"
-                    value="Female"
-                    checked={gender === "Female"}
-                    onChange={(event) => setGender(event.currentTarget.value)}
-                  />
-                  <label className="form-check-label" htmlFor="gridRadios2">
-                    Female
-                  </label>
-                </div>
+                {genders.map((item, index) => (
+                  <div key={index} className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="gender"
+                      required
+                      value={item.value}
+                      checked={gender === item.value}
+                      onChange={(event) => setGender(event.currentTarget.value)}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor={`gender${index}`}
+                    >
+                      {item.label}
+                    </label>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="row mb-3">
@@ -121,26 +112,25 @@ export default function Form({ submitBtnLable, onSave, user, action }: props) {
                   value={country}
                   onChange={(event) => setCountry(event.currentTarget.value)}
                 >
-                  <option>Select</option>
-                  <option>India</option>
-                  <option>USA</option>
-                  <option>Denmark</option>
-                  <option>South Africa</option>
-                  <option>Germany</option>
-                  <option>Barcelona</option>
+                  <option value="">Select</option>
+                  {countries.map((item, index) => (
+                    <option key={index} value={item.value}>
+                      {item.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
             <div className="row justify-content-evenly">
               <div className="col-4 p-4">
-                <button type="submit" className=" btn btn-outline-primary ">
+                <button type="submit" className=" btn btn-primary ">
                   {submitBtnLable}
                 </button>
               </div>
               <div className="col-4 p-4">
                 <Link href="/">
-                  <button type="button" className=" btn btn-outline-primary ">
-                    CANCLE
+                  <button type="button" className=" btn btn-primary ">
+                    CANCEL
                   </button>
                 </Link>
               </div>

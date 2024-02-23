@@ -1,14 +1,15 @@
 "use client";
+import { useEffect, useState } from "react";
 import Form from "@/components/Form";
-// import Navbar from "@/components/Navbar";
+
 import axios from "@/components/api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { taskDef } from "@/components/types";
-import { useEffect, useState } from "react";
+import { userDef } from "@/components/types";
 
-export default function editUser() {
-  const [user, setUser] = useState<taskDef>({
+export default function EditUser() {
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState<userDef>({
     name: "",
     age: "",
     gender: "",
@@ -17,26 +18,28 @@ export default function editUser() {
   let { id } = useParams();
   const router = useRouter();
 
-  let UserData = async () => {
+  let userData = async () => {
+    setLoading(true);
     let res = await axios.get(`/users/${id}`);
     setUser(res.data);
+    setLoading(false);
   };
 
-  let save = async (user: taskDef) => {
+  let save = async (user: userDef) => {
     await axios.put(`/users/${id}`, user);
     router.push("/");
   };
   useEffect(() => {
-    UserData();
+    userData();
   }, [id]);
   return (
     <main>
-      {/* <Navbar /> */}
       <Form
         submitBtnLable="Update"
-        action=" EDIT YOUR TASK"
+        title=" EDIT YOUR TASK"
         onSave={save}
         user={user}
+        loading={loading}
       />
     </main>
   );

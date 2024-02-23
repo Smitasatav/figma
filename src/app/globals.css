@@ -5,6 +5,10 @@
   justify-self: center;
   display: flex;
 }
+
+.table {
+  text-align: center;
+}
 .todo-center-container {
   display: flex;
   flex: 1;
