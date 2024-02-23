@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { taskDef } from "@/components/types";
+import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
 
 interface props {
   submitBtnLable: string;
-  action: string;
-  user?: taskDef;
-  onSave: (user: taskDef) => void;
+  title: string;
+  user?: userDef;
+  onSave: (user: userDef) => void;
 }
 
-export default function Form({ submitBtnLable, onSave, user, action }: props) {
+export default function Form({ submitBtnLable, onSave, user, title }: props) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
@@ -19,7 +19,7 @@ export default function Form({ submitBtnLable, onSave, user, action }: props) {
   const [loading, setLoading] = useState(false);
 
   const save = (event: React.SyntheticEvent) => {
-    let user: taskDef = { name, age, gender, country };
+    let user: userDef = { name, age, gender, country };
     event.preventDefault();
     // console.log(user)
     onSave(user);
@@ -37,7 +37,7 @@ export default function Form({ submitBtnLable, onSave, user, action }: props) {
   return (
     <main>
       <div className="container my-3">
-          <h3 className="text-center">{action}</h3>
+          <h3 className="text-center">{title}</h3>
         {!loading && (
           <form onSubmit={save} className="mt-4">
             <div className="row mb-3">
@@ -104,6 +104,22 @@ export default function Form({ submitBtnLable, onSave, user, action }: props) {
                   />
                   <label className="form-check-label" htmlFor="gridRadios2">
                     Female
+                  </label>
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="gender"
+                    required
+                    // id="gridRadios2"
+                    // defaultValue="option2"
+                    value="Other"
+                    checked={gender === "Other"}
+                    onChange={(event) => setGender(event.currentTarget.value)}
+                  />
+                  <label className="form-check-label" htmlFor="gridRadios3">
+                    Others
                   </label>
                 </div>
               </div>

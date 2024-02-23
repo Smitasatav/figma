@@ -7,7 +7,7 @@ import AddTask from "./add_task/page";
 export default function Home() {
   return (
     <main>
-    <Navbar />
+    {/* <Navbar /> */}
     <Table/>
     </main>
   );

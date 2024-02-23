@@ -1,7 +1,10 @@
+body{
+  background-color: #d6d7ef;
+}
 .background-container {
   /* width: 414px;
   height: 681px; */
-  border: 2px solid #c8c7db;
+  /* border: 2px solid #c8c7db; */
   display: flex;
   flex-direction: column;
   background-color: #d6d7ef;
