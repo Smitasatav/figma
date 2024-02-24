@@ -8,8 +8,7 @@ export default function Navbar() {
   return (
     <main>
       <nav
-        className="navbar navbar-expand-lg p-3 "
-        style={{ backgroundColor: "#9395d3" }}
+        className="navbar navbar-expand-lg bg-body-tertiary "
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
@@ -34,7 +33,7 @@ export default function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link active" href="/Users">
+                <Link className="nav-link active" href="/Summary">
                   Summary
                 </Link>
               </li>

@@ -18,10 +18,6 @@ export default function AddTask(){
         router.push('/')
       };
 
-      useEffect(()=>{
-        document.title="ADD USERS"
-      },[])
-
     return(
         <main>
             {loading ?<Spinner/>:<Form submitBtnLable="ADD" title="ADD USER" onSave={save}/>}

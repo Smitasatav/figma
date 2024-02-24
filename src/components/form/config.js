@@ -1,7 +1,5 @@
-import React from "react";
-
 const countries = [
-  { label: "Select", value: "" },
+//   { label: "Select", value: "" },
   { label: "India", value: "India" },
   { label: "USA", value: "USA" },
   { label: "Denmark", value: "Denmark" },

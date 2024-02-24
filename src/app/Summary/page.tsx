@@ -2,16 +2,14 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "@/components/api";
+import { userDef } from "@/components/types";
 
 export default function getSummary() {
   const [users, setUsers] = useState([]);
-  const[data,setData]= useState([{country:"",count:0}]);
   const [countryData, setCountryData] = useState({
-    country: "",
     male: 0,
     female: 0,
-    others: 0,
-    count:0
+    others: 0
   });
 
   useEffect(() => {
@@ -31,10 +29,9 @@ export default function getSummary() {
     let maleCount = 0;
     let femaleCount = 0;
     let otherCount = 0;
-    let count2=0;
 
     // Calculate counts 
-    users.forEach((user) => {
+    users.forEach((user:userDef) => {
       if (user.gender === "Male") {
         maleCount++;
       } else if (user.gender === "Female") {
@@ -42,23 +39,20 @@ export default function getSummary() {
       } else {
         otherCount++;
       }
-      count2++;
     });
 
     // Update countryData state
     setCountryData({
-      ...countryData,
       male: maleCount,
       female: femaleCount,
       others: otherCount,
-      count: count2
     });
   }, [users]);
 
   return (
     <main>
       <div className="container">
-        <h5 className="text-center mt-3">Total Users</h5>
+        <h5 className="text-center mt-3">USER DATA</h5>
         <Link href="/" className=" d-md-flex justify-content-md-end">
           <button className=" btn btn-primary " type="submit">
             Back to Home Page
@@ -73,8 +67,8 @@ export default function getSummary() {
           </thead>
           <tbody>
             <tr>
-              <td>{countryData.country}</td>
-              <td>{countryData.count}</td>
+              <td></td>
+              <td></td>
             </tr>
           </tbody>
         </table>

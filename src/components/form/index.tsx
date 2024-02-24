@@ -108,14 +108,7 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
                   value={country}
                   onChange={(event) => setCountry(event.currentTarget.value)}
                 >
-                  {/* <option>Select</option>
-                  <option>Australia</option>
-                  <option>Bhutan</option>
-                  <option>Canada</option>
-                  <option>China</option>
-                  <option>France</option>
-                  <option>India</option> */}
-                  <option value="">Select</option>
+                  <option selected disabled value="">Choose...</option>
                   {countries.map((item, index) => (
                     <option key={index} value={item.value}>
                       {item.label}

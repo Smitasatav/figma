@@ -1,12 +1,12 @@
-.todo-center-container {
+/* .todo-center-container {
   display: flex;
   flex: 0.8;
   background: #d6d7ef;
-}
-.todo-list-container {
-  padding: 21px 7px;
+} */
+/* .todo-list-container {
+  padding: 21px 7px; */
   /* width: 100%; */
-  display: flex;
+  /* display: flex;
   flex: 1;
   flex-direction: column;
 }
@@ -111,12 +111,12 @@
   flex-direction: column;
   padding-left: 55px;
   padding-top: 2px;
-}
+} */
 
 /* ******add-todo-css code */
 
 /* *******edit todo css code */
-.edit-page-title-bar {
+/* .edit-page-title-bar {
   display: flex;
   flex: 1;
   align-items: flex-end;
@@ -182,7 +182,7 @@
   line-height: normal;
   font-size: 18;
   cursor: pointer;
-}
+} */
 
 .table{
   text-align: center;
@@ -191,9 +191,9 @@
   background-color: #d6d7ef;
 } */
 
-#todo-form {
+/* #todo-form {
   display: none;
 }
 #turn-back {
   cursor: pointer;
-}
+} */

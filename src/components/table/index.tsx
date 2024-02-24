@@ -7,11 +7,13 @@ import "./style.css";
 
 export default function Table() {
   const [users, setUsers] = useState<userDef[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
+    setLoading(true);
     const res = await axios.get("/users");
     setUsers(res.data.items);
+    setLoading(false);
   };
 
   const deleteUser = async (user: userDef) => {

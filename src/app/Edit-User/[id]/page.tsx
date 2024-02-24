@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { userDef } from "@/components/types";
 import { useEffect, useState } from "react";
+import Spinner from "@/components/Spinner";
 
 export default function editUser() {
   const [loading, setLoading] = useState(false);
@@ -31,12 +32,13 @@ export default function editUser() {
     router.push("/");
   };
   useEffect(() => {
-    document.title="EDIT USER"
+    setLoading(true);
     userData();
+    setLoading(false);
   }, [id]);
   return (
     <main>
-      {!loading && (
+      {loading?<Spinner/>:(
         <Form
           submitBtnLable="Update"
           title="EDIT USER"
