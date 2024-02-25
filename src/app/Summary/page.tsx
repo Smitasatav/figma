@@ -3,24 +3,27 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
+import Spinner from "@/components/Spinner";
 
 export default function getSummary() {
-  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState<userDef[]>([]);
+  const [countryCounts, setCountryCounts] = useState<{ [key: string]: number }>(
+    {}
+  );
   const [countryData, setCountryData] = useState({
     male: 0,
     female: 0,
-    others: 0
+    others: 0,
   });
 
+  const fetchData = async () => {
+    setLoading(true);
+    const res = await axios.get("/users");
+    setUsers(res.data.items);
+    setLoading(false);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("/users");
-        setUsers(res.data.items);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
     fetchData();
   }, []);
 
@@ -30,8 +33,8 @@ export default function getSummary() {
     let femaleCount = 0;
     let otherCount = 0;
 
-    // Calculate counts 
-    users.forEach((user:userDef) => {
+    // Calculate counts
+    users.forEach((user: userDef) => {
       if (user.gender === "Male") {
         maleCount++;
       } else if (user.gender === "Female") {
@@ -40,13 +43,18 @@ export default function getSummary() {
         otherCount++;
       }
     });
-
     // Update countryData state
     setCountryData({
       male: maleCount,
       female: femaleCount,
       others: otherCount,
     });
+
+    const counts: { [key: string]: number } = {};
+    users.forEach((user) => {
+      counts[user.country] = (counts[user.country] || 0) + 1;
+    });
+    setCountryCounts(counts);
   }, [users]);
 
   return (
@@ -58,6 +66,7 @@ export default function getSummary() {
             Back to Home Page
           </button>
         </Link>
+        {loading && <Spinner />}
         <table className="table table-bordered mt-3" style={{ width: "40%" }}>
           <thead>
             <tr>
@@ -66,10 +75,12 @@ export default function getSummary() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-            </tr>
+            {Object.entries(countryCounts).map(([country, count]) => (
+              <tr key={country}>
+                <td>{country}</td>
+                <td>{count}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <table className="table table-bordered mt-5" style={{ width: "40%" }}>

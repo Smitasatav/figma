@@ -26,12 +26,21 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
     onSave(user);
   };
 
+  const clearForm = () => {
+    setName("");
+    setAge("");
+    setGender("");
+    setCountry("");
+  };
+
   useEffect(() => {
     if (user) {
+      setLoading(true)
       setName(user.name);
       setAge(user.age);
       setGender(user.gender);
       setCountry(user.country);
+      setLoading(false)
     }
   }, [user]);
 
@@ -49,7 +58,6 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
                   className="form-control"
                   name="name"
                   required
-                  // id="inputEmail3"
                   placeholder="Enter your name"
                   onChange={(event) => setName(event.currentTarget.value)}
                   value={name}
@@ -64,7 +72,6 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
                   name="age"
                   className="form-control"
                   required
-                  // id="inputPassword3"
                   placeholder="Enter your age"
                   onChange={(event) => setAge(event.currentTarget.value)}
                   value={age}
@@ -108,7 +115,9 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
                   value={country}
                   onChange={(event) => setCountry(event.currentTarget.value)}
                 >
-                  <option selected disabled value="">Choose...</option>
+                  <option selected disabled value="">
+                    Choose...
+                  </option>
                   {countries.map((item, index) => (
                     <option key={index} value={item.value}>
                       {item.label}
@@ -117,15 +126,24 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
                 </select>
               </div>
             </div>
-            <div className="row justify-content-evenly">
-              <div className="col-4 p-4">
+            <div className="d-flex flex-row mb-3">
+              <div className="p-4">
                 <button type="submit" className="btn btn-primary">
                   {submitBtnLable}
                 </button>
               </div>
-              <div className="col-4 p-4">
+              <div className="p-4">
+                <button
+                  type="submit"
+                  className="btn btn-warning"
+                  onClick={clearForm}
+                >
+                  CLEAR
+                </button>
+              </div>
+              <div className="p-4">
                 <Link href="/">
-                  <button type="button" className="btn btn-primary">
+                  <button type="button" className="btn btn-danger">
                     CANCEL
                   </button>
                 </Link>

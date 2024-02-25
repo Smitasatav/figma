@@ -91,17 +91,6 @@ export default function Table() {
                       </ul>
                     </div>
                   </td>
-
-                  {/* <td>
-                    <Link href={`/Edit-User/${user._uuid}`}>
-                      <img src="./icons/pencil.svg" />
-                    </Link>
-                  </td>
-                  <td>
-                    <Link href="">
-                      <img src="./icons/trash.svg" onClick={()=>deleteUser(user)} />
-                    </Link>
-                  </td> */}
                 </tr>
               );
             })}

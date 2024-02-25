@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import Spinner from "@/components/Spinner";
 
 export default function editUser() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<userDef>({
     name: "",
     age: "",
