@@ -1,14 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import Form from "@/components/Form";
-
+import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { userDef } from "@/components/types";
 
 export default function EditUser() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<userDef>({
     name: "",
     age: "",

@@ -31,6 +31,13 @@ export default function Form({
     onSave(user);
   };
 
+  const clearForm = () => {
+    setName("");
+    setAge("");
+    setGender("");
+    setCountry("");
+  };
+
   useEffect(() => {
     if (user) {
       setName(user.name);
@@ -85,15 +92,15 @@ export default function Form({
                       type="radio"
                       name="gender"
                       required
-                      value={item.value}
-                      checked={gender === item.value}
+                      value={item}
+                      checked={gender === item}
                       onChange={(event) => setGender(event.currentTarget.value)}
                     />
                     <label
                       className="form-check-label"
                       htmlFor={`gender${index}`}
                     >
-                      {item.label}
+                      {item}
                     </label>
                   </div>
                 ))}
@@ -112,24 +119,35 @@ export default function Form({
                   value={country}
                   onChange={(event) => setCountry(event.currentTarget.value)}
                 >
-                  <option value="">Select</option>
+                  <option selected disabled value="">
+                    Choose...
+                  </option>
                   {countries.map((item, index) => (
-                    <option key={index} value={item.value}>
-                      {item.label}
+                    <option key={index} value={item}>
+                      {item}
                     </option>
                   ))}
                 </select>
               </div>
             </div>
-            <div className="row justify-content-evenly">
-              <div className="col-4 p-4">
+            <div className="d-flex flex-row mb-3">
+              <div className=" p-3">
                 <button type="submit" className=" btn btn-primary ">
                   {submitBtnLable}
                 </button>
               </div>
-              <div className="col-4 p-4">
+              <div className="p-3">
+                <button
+                  type="submit"
+                  className="btn btn-warning"
+                  onClick={clearForm}
+                >
+                  CLEAR
+                </button>
+              </div>
+              <div className="p-3 ">
                 <Link href="/">
-                  <button type="button" className=" btn btn-primary ">
+                  <button type="button" className=" btn btn-danger">
                     CANCEL
                   </button>
                 </Link>
