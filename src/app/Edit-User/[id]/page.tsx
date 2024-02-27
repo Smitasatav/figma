@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { userDef } from "@/components/types";
 import { useEffect, useState } from "react";
+import Head from "next/head";
 import Spinner from "@/components/Spinner";
 
 export default function editUser() {
@@ -18,7 +19,7 @@ export default function editUser() {
   let { id } = useParams();
   const router = useRouter();
 
-  let userData = async () => {
+  let fetchData = async () => {
     setLoading(true);
     let res = await axios.get(`/users/${id}`);
     setUser(res.data);
@@ -33,11 +34,18 @@ export default function editUser() {
   };
   useEffect(() => {
     setLoading(true);
-    userData();
+    fetchData();
     setLoading(false);
   }, [id]);
+
+
+  const pageTitle="Edit User";
+
   return (
     <main>
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
       {/* {loading?<Spinner/>:( */}
         <Form
           submitBtnLable="Update"

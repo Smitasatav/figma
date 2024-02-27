@@ -1,12 +1,14 @@
 import React from "react";
-// import "./style.css";
+import "./style.css";
 
 export default function Spinner() {
   // return <div className="spinner"></div>;
   return (
-    <div className="d-flex justify-content-center p-5">
-      <div className="spinner-border" role="status">
-        <span className="visually-hidden">Loading...</span>
+    <div className="spinner-container">
+      <div className="spinner-wrapper">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
       </div>
     </div>
   );

@@ -10,14 +10,20 @@ interface props {
   title: string;
   user?: userDef;
   onSave: (user: userDef) => void;
+  loading?: boolean;
 }
 
-export default function Form({ submitBtnLable, onSave, user, title }: props) {
+export default function Form({
+  submitBtnLable,
+  onSave,
+  user,
+  title,
+  loading,
+}: props) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const save = (event: React.SyntheticEvent) => {
     let user: userDef = { name, age, gender, country };
@@ -35,20 +41,20 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
 
   useEffect(() => {
     if (user) {
-      setLoading(true)
       setName(user.name);
       setAge(user.age);
       setGender(user.gender);
       setCountry(user.country);
-      setLoading(false)
     }
   }, [user]);
 
   return (
     <main>
       <div className="container my-3">
-        <h3 className="text-center">{title}</h3>
-        {!loading && (
+        <h4 className="text-center">{title}</h4>
+        {loading ? (
+          <Spinner />
+        ) : (
           <form onSubmit={save} className="mt-4">
             <div className="row mb-3">
               <label className="col-sm-2 col-form-label">Name</label>
@@ -127,12 +133,12 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
               </div>
             </div>
             <div className="d-flex flex-row mb-3">
-              <div className="p-4">
+              <div className="me-2 mt-3">
                 <button type="submit" className="btn btn-primary">
                   {submitBtnLable}
                 </button>
               </div>
-              <div className="p-4">
+              <div className="me-2 mt-3">
                 <button
                   type="submit"
                   className="btn btn-warning"
@@ -141,7 +147,7 @@ export default function Form({ submitBtnLable, onSave, user, title }: props) {
                   CLEAR
                 </button>
               </div>
-              <div className="p-4">
+              <div className="me-2 mt-3">
                 <Link href="/">
                   <button type="button" className="btn btn-danger">
                     CANCEL

@@ -2,7 +2,7 @@
 import Form from "@/components/form";
 import Navbar from "@/components/navbar";
 import Table from "@/components/table";
-import AddTask from "./add_task/page";
+import AddTask from "./Add-User/page";
 
 export default function Home() {
   return (

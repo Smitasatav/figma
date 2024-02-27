@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Form from "@/components/form";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
 import { useRouter } from 'next/navigation'
 
-export default function AddTask(){
+export default function AddUser(){
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
@@ -20,7 +20,7 @@ export default function AddTask(){
 
     return(
         <main>
-            {loading ?<Spinner/>:<Form submitBtnLable="ADD" title="ADD USER" onSave={save}/>}
+            <Form submitBtnLable="ADD" title="ADD USER" onSave={save} loading={loading}/>
         </main>
     )
 }
