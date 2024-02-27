@@ -8,6 +8,7 @@ import "./style.css";
 export default function Table() {
   const [users, setUsers] = useState<userDef[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
 
   const fetchData = async () => {
     setLoading(true);
@@ -27,19 +28,51 @@ export default function Table() {
     }
   };
 
+  // const handleChange = (event:React.SyntheticEvent) => {
+  //   event.preventDefault();
+  //   setSearchInput(event.currentTarget.value);
+  // };
+  
+  // if (searchInput.length > 0) {
+  //     users.filter((user) => {
+  //     return user.name.match(searchInput);
+  // });
+  // }
+
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
+  
+  useEffect(() => {
+    // Filter users only if there's a search input
+    if (searchInput.length > 0) {
+      const filteredUsers = users.filter((user) => {
+        return user.name.toLowerCase().includes(searchInput.toLowerCase());
+      });
+      setUsers(filteredUsers);
+    } else {
+      // If search input is empty, fetch all users
+      fetchData();
+    }
+  }, [searchInput]);
+  
 
   return (
     <main>
       <div className="container">
         <h5 className="text-center mt-2 "> Population List </h5>
-        {/* {loading && <Spinner />} */}
         {loading ? (
           <Spinner />
         ) : (
           <>
+            <div className=" card col-2 mb-1 mx-auto me-5">
+              <input type="text" placeholder="Search items" value={searchInput} onChange={handleChange}></input>
+            </div>
+
             <Link href="/Add-User">
               <button className=" btn btn-primary " type="submit">
                 Create
