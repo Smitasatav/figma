@@ -38,14 +38,15 @@ export default function editUser() {
   }, [id]);
   return (
     <main>
-      {loading?<Spinner/>:(
+      {/* {loading?<Spinner/>:( */}
         <Form
           submitBtnLable="Update"
           title="EDIT USER"
           onSave={save}
           user={user}
+          loading={loading}
         />
-      )}
+      {/* )} */}
     </main>
   );
 }
