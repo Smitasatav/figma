@@ -5,6 +5,7 @@ import axios from "@/components/api";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
 import { useRouter } from "next/navigation";
+import Head from "next/head";
 
 export default function AddTask() {
   const [loading, setLoading] = useState(false);
@@ -18,12 +19,13 @@ export default function AddTask() {
     router.push("/");
   };
 
-  useEffect(() => {
-    document.title = "Add task";
-  }, []);
+  const pageTitle = "Add Task";
 
   return (
     <main>
+      <head>
+        <title>{pageTitle}</title>
+      </head>
       {!loading ? (
         <Form submitBtnLable="ADD" title="ADD USER" onSave={save} />
       ) : (

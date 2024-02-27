@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
+import Head from "next/head";
 
 export default function getSummary() {
   const [loading, setLoading] = useState(true);
@@ -46,7 +46,7 @@ export default function getSummary() {
       }
     });
 
-    // Update countryData state
+    // Update countryData
     setCountryData({
       male: maleCount,
       female: femaleCount,
@@ -60,9 +60,14 @@ export default function getSummary() {
     setCountryCounts(counts);
   }, [users]);
 
+  const pageTitle = "Summary";
+
   return (
     <main>
-      <div className="container">
+      <head>
+        <title>{pageTitle}</title>
+      </head>
+      <div className="container ">
         <h5 className="text-center mt-3">
           <b>Summary</b>
         </h5>
@@ -71,7 +76,7 @@ export default function getSummary() {
           <Spinner />
         ) : (
           <>
-            <div>
+            <div className="table1 d-flex justify-content-center align-items-center">
               <table
                 className="table table-bordered mt-3"
                 style={{ width: "40%" }}
@@ -91,6 +96,8 @@ export default function getSummary() {
                   ))}
                 </tbody>
               </table>
+            </div>
+            <div className="table2 d-flex justify-content-center align-items-center">
               <table
                 className="table table-bordered mt-5"
                 style={{ width: "40%" }}

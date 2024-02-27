@@ -6,6 +6,7 @@ import axios from "@/components/api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { userDef } from "@/components/types";
+import Head from "next/head";
 
 export default function EditUser() {
   const [loading, setLoading] = useState(true);
@@ -32,8 +33,14 @@ export default function EditUser() {
   useEffect(() => {
     userData();
   }, [id]);
+
+  const pageTitle = "Edit Task";
+
   return (
     <main>
+      <head>
+        <title>{pageTitle}</title>
+      </head>
       <Form
         submitBtnLable="Update"
         title=" EDIT YOUR TASK"

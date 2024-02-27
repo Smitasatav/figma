@@ -1,0 +1,31 @@
+.col-md-7 {
+  /* display: flex; */
+}
+
+.col-sm-2-col-form-label {
+  margin-left: 52px;
+}
+
+.form-control,
+.form-select {
+  margin-left: 53px;
+  margin-top: 10px;
+}
+
+.form-check {
+  margin-left: 120px;
+  padding-left: 72px;
+}
+
+.buttons {
+  margin-left: 37px;
+}
+
+.text-center {
+  font-family: serif;
+  margin-top: 18px;
+}
+
+.valid-feedback {
+  margin-left: 53px;
+}
