@@ -12,7 +12,11 @@ export default function Table() {
   const fetchData = async () => {
     setLoading(true);
     const res = await axios.get("/users");
-    setUsers(res.data.items);
+    // Sorting users alphabetically by name
+    const sortedUsers = res.data.items.sort((a: userDef, b: userDef) =>
+      a.name.localeCompare(b.name)
+    );
+    setUsers(sortedUsers);
     setLoading(false);
   };
 

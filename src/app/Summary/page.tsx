@@ -91,12 +91,16 @@ export default function getSummary() {
                   </tr>
                 </thead>
                 <tbody>
-                  {Object.entries(countryCounts).map(([country, count]) => (
-                    <tr key={country}>
-                      <td>{country}</td>
-                      <td>{count}</td>
-                    </tr>
-                  ))}
+                  {Object.entries(countryCounts)
+                    .sort(([countryA], [countryB]) =>
+                      countryA.localeCompare(countryB)
+                    ) // Sort entries alphabetically by country name
+                    .map(([country, count]) => (
+                      <tr key={country}>
+                        <td>{country}</td>
+                        <td>{count}</td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
