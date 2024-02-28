@@ -27,7 +27,9 @@ export default function EditUser() {
   };
 
   let save = async (user: userDef) => {
+    setLoading(true);
     await axios.put(`/users/${id}`, user);
+    setLoading(false);
     router.push("/");
   };
   useEffect(() => {
@@ -38,9 +40,9 @@ export default function EditUser() {
 
   return (
     <main>
-      <head>
+      <Head>
         <title>{pageTitle}</title>
-      </head>
+      </Head>
       <Form
         submitBtnLable="Update"
         title=" EDIT YOUR TASK"

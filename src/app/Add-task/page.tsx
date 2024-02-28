@@ -19,20 +19,20 @@ export default function AddTask() {
     router.push("/");
   };
 
-  const pageTitle = "Add Task";
+  const pageTitle = "Add User";
 
   return (
     <main>
-      <head>
+      <Head>
         <title>{pageTitle}</title>
-      </head>
-      {!loading ? (
-        <Form submitBtnLable="ADD" title="ADD USER" onSave={save} />
-      ) : (
-        <div className="main">
-          <Spinner />
-        </div>
-      )}
+      </Head>
+
+      <Form
+        submitBtnLable="ADD"
+        title="ADD USER"
+        onSave={save}
+        loading={loading}
+      />
     </main>
   );
 }

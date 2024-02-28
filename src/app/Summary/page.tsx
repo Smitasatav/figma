@@ -8,10 +8,10 @@ import Head from "next/head";
 export default function getSummary() {
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<userDef[]>([]);
-  const [countryCounts, setCountryCounts] = useState<{ [key: string]: number }>(
-    {}
-  );
-  const [countryData, setCountryData] = useState({
+  const [countryCounts, setCountryCounts] = useState<{
+    [country: string]: number;
+  }>({});
+  const [genderData, setGenderData] = useState({
     male: 0,
     female: 0,
     others: 0,
@@ -47,26 +47,29 @@ export default function getSummary() {
     });
 
     // Update countryData
-    setCountryData({
+    let genderData = {
       male: maleCount,
       female: femaleCount,
       others: otherCount,
-    });
+    };
+    setGenderData(genderData);
 
-    const counts: { [key: string]: number } = {};
+    const counts: { [country: string]: number } = {};
     users.forEach((user) => {
       counts[user.country] = (counts[user.country] || 0) + 1;
     });
+
     setCountryCounts(counts);
   }, [users]);
 
   const pageTitle = "Summary";
+  console.log(countryCounts, genderData);
 
   return (
     <main>
-      <head>
+      <Head>
         <title>{pageTitle}</title>
-      </head>
+      </Head>
       <div className="container ">
         <h5 className="text-center mt-3">
           <b>Summary</b>
@@ -111,15 +114,15 @@ export default function getSummary() {
                 <tbody>
                   <tr>
                     <td>Male</td>
-                    <td>{countryData.male}</td>
+                    <td>{genderData.male}</td>
                   </tr>
                   <tr>
                     <td>Female</td>
-                    <td>{countryData.female}</td>
+                    <td>{genderData.female}</td>
                   </tr>
                   <tr>
                     <td>Others</td>
-                    <td>{countryData.others}</td>
+                    <td>{genderData.others}</td>
                   </tr>
                 </tbody>
               </table>
