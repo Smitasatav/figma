@@ -10,13 +10,16 @@ export default function Table() {
   const [loading, setLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("");
 
-  const fetchData = async () => {
+ const fetchData = async () => {
     setLoading(true);
     const res = await axios.get("/users");
-    setUsers(res.data.items);
+    // Sorting users alphabetically by name
+    const sortedUsers = res.data.items.sort((a: userDef, b: userDef) =>
+      a.name.localeCompare(b.name)
+    );
+    setUsers(sortedUsers);
     setLoading(false);
   };
-
   const deleteUser = async (user: userDef) => {
     try {
       setLoading(true);
@@ -27,17 +30,6 @@ export default function Table() {
       console.log("Error while deleting the user", error);
     }
   };
-
-  // const handleChange = (event:React.SyntheticEvent) => {
-  //   event.preventDefault();
-  //   setSearchInput(event.currentTarget.value);
-  // };
-  
-  // if (searchInput.length > 0) {
-  //     users.filter((user) => {
-  //     return user.name.match(searchInput);
-  // });
-  // }
 
   useEffect(() => {
     fetchData();
@@ -72,7 +64,6 @@ export default function Table() {
             <div className=" card col-2 mb-1 mx-auto me-5">
               <input type="text" placeholder="Search items" value={searchInput} onChange={handleChange}></input>
             </div>
-
             <Link href="/Add-User">
               <button className=" btn btn-primary " type="submit">
                 Create

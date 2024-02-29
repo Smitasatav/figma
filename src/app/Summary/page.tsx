@@ -26,22 +26,6 @@ export default function getSummary() {
   }, []);
 
   useEffect(() => {
-    // Initialize counts
-    let maleCount = 0;
-    let femaleCount = 0;
-    let otherCount = 0;
-
-    // Calculate counts
-    users.forEach((user: userDef) => {
-      if (user.gender === "Male") {
-        maleCount++;
-      } else if (user.gender === "Female") {
-        femaleCount++;
-      } else {
-        otherCount++;
-      }
-    });
-
     // Calculate genderdata
     let genderData: { [gender: string]: number } = {};
     users.forEach((user) => {

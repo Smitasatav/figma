@@ -1,26 +1,41 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
-    <main>
-      <nav
-        className="navbar navbar-expand-lg bg-body-tertiary "
-      >
-        <div className="container-fluid">
-          <Link className="navbar-brand" href="#">
-            User Portal
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" >
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+    <nav className="navbar navbar-dark bg-dark mb-2">
+      <div className="container-fluid">
+        <Link className="navbar-brand" href="/">
+          USER PORTAL
+        </Link>
+        <button className="navbar-toggler" type="button" onClick={toggleMenu}>
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div
+          className={`offcanvas offcanvas-end text-bg-dark ${
+            menuOpen ? "show" : ""
+          }`}
+          tabIndex={-1}
+        >
+          <div className="offcanvas-header">
+            <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
+              User Portal
+            </h5>
+            <button
+              type="button"
+              className="btn-close btn-close-white"
+              onClick={toggleMenu}
+            />
+          </div>
+          <div className="offcanvas-body">
+            <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
                 <Link className="nav-link active" href="/">
                   Home
@@ -32,20 +47,9 @@ export default function Navbar() {
                 </Link>
               </li>
             </ul>
-            {/* <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form> */}
           </div>
         </div>
-      </nav>
-    </main>
+      </div>
+    </nav>
   );
 }
