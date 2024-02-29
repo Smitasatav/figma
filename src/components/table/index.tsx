@@ -10,7 +10,7 @@ export default function Table() {
   const [loading, setLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("");
 
- const fetchData = async () => {
+  const fetchData = async () => {
     setLoading(true);
     const res = await axios.get("/users");
     // Sorting users alphabetically by name
@@ -38,20 +38,12 @@ export default function Table() {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value);
   };
-  
-  useEffect(() => {
-    // Filter users only if there's a search input
-    if (searchInput.length > 0) {
-      const filteredUsers = users.filter((user) => {
-        return user.name.toLowerCase().includes(searchInput.toLowerCase());
-      });
-      setUsers(filteredUsers);
-    } else {
-      // If search input is empty, fetch all users
-      fetchData();
-    }
-  }, [searchInput]);
-  
+
+  let filteredUsers = users;
+  if (searchInput.length > 0)
+    filteredUsers = users.filter((user) => {
+      return user.name.toLowerCase().includes(searchInput.toLowerCase());
+    });
 
   return (
     <main>
@@ -62,7 +54,12 @@ export default function Table() {
         ) : (
           <>
             <div className=" card col-2 mb-1 mx-auto me-5">
-              <input type="text" placeholder="Search items" value={searchInput} onChange={handleChange}></input>
+              <input
+                type="text"
+                placeholder="Search items"
+                value={searchInput}
+                onChange={handleChange}
+              ></input>
             </div>
             <Link href="/Add-User">
               <button className=" btn btn-primary " type="submit">
@@ -82,7 +79,7 @@ export default function Table() {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => {
+                {filteredUsers.map((user, index) => {
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>

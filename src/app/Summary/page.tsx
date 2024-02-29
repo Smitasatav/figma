@@ -42,7 +42,7 @@ export default function getSummary() {
     setCountryCounts(counts);
   }, [users]);
 
-  console.log(countryCounts,genderData);
+  console.log(countryCounts, genderData);
 
   return (
     <main>
@@ -71,12 +71,16 @@ export default function getSummary() {
                   </tr>
                 </thead>
                 <tbody>
-                  {Object.entries(countryCounts).map(([country, count]) => (
-                    <tr key={country}>
-                      <td>{country}</td>
-                      <td>{count}</td>
-                    </tr>
-                  ))}
+                  {Object.entries(countryCounts)
+                    .sort(([countryA], [countryB]) =>
+                      countryA.localeCompare(countryB)
+                    )
+                    .map(([country, count]) => (
+                      <tr key={country}>
+                        <td>{country}</td>
+                        <td>{count}</td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
@@ -92,12 +96,16 @@ export default function getSummary() {
                   </tr>
                 </thead>
                 <tbody>
-                  {Object.entries(genderData).map(([gender, count]) => (
-                    <tr>
-                      <td>{gender}</td>
-                      <td>{count}</td>
-                    </tr>
-                  ))}
+                  {Object.entries(genderData)
+                    .sort(([genderA], [genderB]) =>
+                      genderA.localeCompare(genderB)
+                    )
+                    .map(([gender, count]) => (
+                      <tr>
+                        <td>{gender}</td>
+                        <td>{count}</td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
