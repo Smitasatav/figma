@@ -42,6 +42,16 @@ export default function getSummary() {
     setCountryCounts(counts);
   }, [users]);
 
+  const getRowColor = (count: number) => {
+      if (count >= 0 && count <= 3) {
+        return "table-default";
+      } else if (count >= 4 && count <= 7) {
+        return "table-warning";
+      } else {
+        return "table-danger";
+      }
+    };
+
   console.log(countryCounts, genderData);
 
   return (
@@ -76,7 +86,7 @@ export default function getSummary() {
                       countryA.localeCompare(countryB)
                     )
                     .map(([country, count]) => (
-                      <tr key={country}>
+                      <tr key={country} className={getRowColor(count)}>
                         <td>{country}</td>
                         <td>{count}</td>
                       </tr>
@@ -101,7 +111,7 @@ export default function getSummary() {
                       genderA.localeCompare(genderB)
                     )
                     .map(([gender, count]) => (
-                      <tr>
+                      <tr className={getRowColor(count)}>
                         <td>{gender}</td>
                         <td>{count}</td>
                       </tr>
