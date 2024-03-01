@@ -11,11 +11,9 @@ export default function getSummary() {
   const [countryCounts, setCountryCounts] = useState<{
     [country: string]: number;
   }>({});
-  const [genderData, setGenderData] = useState({
-    male: 0,
-    female: 0,
-    others: 0,
-  });
+  const [genderData, setGenderData] = useState<{ [gender: string]: number }>(
+    {}
+  );
 
   const fetchData = async () => {
     setLoading(true);
@@ -23,58 +21,50 @@ export default function getSummary() {
     setUsers(res.data.items);
     setLoading(false);
   };
-
   useEffect(() => {
     fetchData();
   }, []);
 
   useEffect(() => {
-    // Initialize counts
-    let maleCount = 0;
-    let femaleCount = 0;
-    let otherCount = 0;
-
-    // Calculate counts
-
-    users.forEach((user: userDef) => {
-      if (user.gender === "Male") {
-        maleCount++;
-      } else if (user.gender === "Female") {
-        femaleCount++;
-      } else {
-        otherCount++;
-      }
+    // Calculate genderdata
+    let genderData: { [gender: string]: number } = {};
+    users.forEach((user) => {
+      genderData[user.gender] = (genderData[user.gender] || 0) + 1;
     });
-
-    // Update countryData
-    let genderData = {
-      male: maleCount,
-      female: femaleCount,
-      others: otherCount,
-    };
+    // console.log(genderData);
     setGenderData(genderData);
 
+    // calculate country count
     const counts: { [country: string]: number } = {};
     users.forEach((user) => {
       counts[user.country] = (counts[user.country] || 0) + 1;
     });
-
     setCountryCounts(counts);
   }, [users]);
 
-  const pageTitle = "Summary";
+  const getRowColor = (count: number) => {
+    if (count >= 0 && count <= 3) {
+      return "table-default";
+    } else if (count >= 4 && count <= 7) {
+      return "table-warning";
+    } else {
+      return "table-danger";
+    }
+  };
+
   console.log(countryCounts, genderData);
 
   return (
     <main>
-      <Head>
-        <title>{pageTitle}</title>
-      </Head>
-      <div className="container ">
+      <div className="container">
         <h5 className="text-center mt-3">
-          <b>Summary</b>
+          <b>SUMMARY</b>
         </h5>
-        {/* {loading && <Spinner />} */}
+        {/* <Link href="/" className=" d-md-flex justify-content-md-end">
+          <button className=" btn btn-primary " type="submit">
+            Back to Home Page
+          </button>
+        </Link> */}
         {loading ? (
           <Spinner />
         ) : (
@@ -94,9 +84,9 @@ export default function getSummary() {
                   {Object.entries(countryCounts)
                     .sort(([countryA], [countryB]) =>
                       countryA.localeCompare(countryB)
-                    ) // Sort entries alphabetically by country name
+                    )
                     .map(([country, count]) => (
-                      <tr key={country}>
+                      <tr key={country} className={getRowColor(count)}>
                         <td>{country}</td>
                         <td>{count}</td>
                       </tr>
@@ -104,7 +94,7 @@ export default function getSummary() {
                 </tbody>
               </table>
             </div>
-            <div className="table2 d-flex justify-content-center align-items-center">
+            <div className="table1 d-flex justify-content-center align-items-center">
               <table
                 className="table table-bordered mt-5"
                 style={{ width: "40%" }}
@@ -116,18 +106,16 @@ export default function getSummary() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Male</td>
-                    <td>{genderData.male}</td>
-                  </tr>
-                  <tr>
-                    <td>Female</td>
-                    <td>{genderData.female}</td>
-                  </tr>
-                  <tr>
-                    <td>Others</td>
-                    <td>{genderData.others}</td>
-                  </tr>
+                  {Object.entries(genderData)
+                    .sort(([genderA], [genderB]) =>
+                      genderA.localeCompare(genderB)
+                    )
+                    .map(([gender, count]) => (
+                      <tr>
+                        <td>{gender}</td>
+                        <td>{count}</td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>

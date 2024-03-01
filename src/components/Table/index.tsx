@@ -8,11 +8,12 @@ import "./style.css";
 export default function Table() {
   const [users, setUsers] = useState<userDef[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
 
   const fetchData = async () => {
     setLoading(true);
     const res = await axios.get("/users");
-    // Sorting users alphabetically by name
+    // Sorting by name
     const sortedUsers = res.data.items.sort((a: userDef, b: userDef) =>
       a.name.localeCompare(b.name)
     );
@@ -34,6 +35,16 @@ export default function Table() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
+  let filteredUsers = users;
+  if (searchInput.length > 0)
+    filteredUsers = users.filter((user) => {
+      return user.name.toLowerCase().includes(searchInput.toLowerCase());
+    });
+
   return (
     <main>
       <div className="container">
@@ -46,6 +57,14 @@ export default function Table() {
           <Spinner />
         ) : (
           <>
+            <div className=" card col-2 mb-1 mx-auto me-5">
+              <input
+                type="text"
+                placeholder="Search items"
+                value={searchInput}
+                onChange={handleChange}
+              ></input>
+            </div>
             <Link href="/Add-task">
               <button className=" btn btn-primary " type="submit">
                 Create
@@ -64,7 +83,7 @@ export default function Table() {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => {
+                {filteredUsers.map((user, index) => {
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
