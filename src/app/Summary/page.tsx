@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
@@ -43,19 +44,22 @@ export default function getSummary() {
   }, [users]);
 
   const getRowColor = (count: number) => {
-      if (count >= 0 && count <= 3) {
-        return "table-default";
-      } else if (count >= 4 && count <= 7) {
-        return "table-warning";
-      } else {
-        return "table-danger";
-      }
-    };
+    if (count >= 0 && count <= 3) {
+      return "table-default";
+    } else if (count >= 4 && count <= 7) {
+      return "table-warning";
+    } else {
+      return "table-danger";
+    }
+  };
 
   console.log(countryCounts, genderData);
 
   return (
     <main>
+      <Head>
+        <title>SUMMARY PAGE</title>
+      </Head>
       <div className="container">
         <h5 className="text-center mt-3">
           <b>SUMMARY</b>
@@ -111,7 +115,7 @@ export default function getSummary() {
                       genderA.localeCompare(genderB)
                     )
                     .map(([gender, count]) => (
-                      <tr className={getRowColor(count)}>
+                      <tr>
                         <td>{gender}</td>
                         <td>{count}</td>
                       </tr>

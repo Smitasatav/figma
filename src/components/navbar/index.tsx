@@ -25,7 +25,7 @@ export default function Navbar() {
           tabIndex={-1}
         >
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
+            <h5 className="offcanvas-title">
               User Portal
             </h5>
             <button

@@ -38,22 +38,19 @@ export default function editUser() {
     setLoading(false);
   }, [id]);
 
-
-  const pageTitle="Edit User";
-
   return (
     <main>
       <Head>
-        <title>{pageTitle}</title>
+        <title>EDIT USER</title>
       </Head>
       {/* {loading?<Spinner/>:( */}
-        <Form
-          submitBtnLable="Update"
-          title="EDIT USER"
-          onSave={save}
-          user={user}
-          loading={loading}
-        />
+      <Form
+        submitBtnLable="Update"
+        title="EDIT USER"
+        onSave={save}
+        user={user}
+        loading={loading}
+      />
       {/* )} */}
     </main>
   );

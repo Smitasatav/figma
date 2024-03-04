@@ -1,3 +1,8 @@
 .dropdown:hover .dropdown-menu {
-    display: block;
-  }
+  display: block;
+}
+.pagination .page-item.active .page-link {
+  background-color: #007bff; /* Change this to the color you desire */
+  border-color: #007bff; /* Change this to match background color */
+  color: #fff; /* Change this to the desired text color */
+}
