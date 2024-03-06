@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Form from "@/components/Form";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
-import Spinner from "@/components/Spinner";
+
 import { useRouter } from "next/navigation";
 import Head from "next/head";
 
