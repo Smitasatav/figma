@@ -9,6 +9,10 @@ export default function Navbar() {
     setMenuOpen(!menuOpen);
   };
 
+  const closeMenu=()=>{
+    setMenuOpen(false);
+  }
+
   return (
     <nav className="navbar navbar-dark bg-dark mb-2">
       <div className="container-fluid">
@@ -28,20 +32,20 @@ export default function Navbar() {
             <h5 className="offcanvas-title">
               User Portal
             </h5>
-            <button
+            {/* <button
               type="button"
               className="btn-close btn-close-white"
               onClick={toggleMenu}
-            />
+            /> */}
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li className="nav-item">
+              <li className="nav-item" onClick={closeMenu}>
                 <Link className="nav-link active" href="/">
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item" onClick={closeMenu}>
                 <Link className="nav-link active" href="/Summary">
                   Summary
                 </Link>
