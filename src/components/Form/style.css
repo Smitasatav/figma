@@ -4,6 +4,7 @@
 
 .col-sm-2-col-form-label {
   margin-left: 52px;
+  margin-top: 10px;
 }
 
 .form-control,
@@ -19,6 +20,7 @@
 
 .buttons {
   margin-left: 50px;
+  margin-top: 10px;
 }
 
 .text-center {
@@ -29,3 +31,19 @@
 .valid-feedback {
   margin-left: 53px;
 }
+
+/* .form-error {
+  font-size: 0.875rem; 
+  color: #dc3545; 
+  margin-top: 0.25rem; 
+  margin-left: 10px; 
+} */
+
+/* .form-control.is-invalid {
+  border-color: red;
+  box-shadow: none !important;
+} */
+
+/* .invalid-feedback {
+  color: red;
+} */

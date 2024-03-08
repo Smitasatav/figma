@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Form from "@/components/Form";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
-
 import { useRouter } from "next/navigation";
 import Head from "next/head";
 
@@ -30,7 +29,7 @@ export default function AddTask() {
       <Form
         submitBtnLable="ADD"
         title="ADD USER"
-        onSave={save}
+        save={save}
         loading={loading}
       />
     </main>

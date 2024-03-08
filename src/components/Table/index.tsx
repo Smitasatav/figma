@@ -15,7 +15,26 @@ export default function Table() {
   const fetchData = async () => {
     setLoading(true);
     const res = await axios.get("/users");
-    const sortedUsers = res.data.items.sort((a: userDef, b: userDef) =>
+    let users = res.data.items;
+    users.forEach((user) => {
+      user.created = new Date(user._created * 1000).toLocaleDateString(
+        "en-US",
+        {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }
+      );
+      user.modified = new Date(user._modified * 1000).toLocaleDateString(
+        "en-US",
+        {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }
+      );
+    });
+    const sortedUsers = users.sort((a: { name: string }, b: { name: string }) =>
       a.name.localeCompare(b.name)
     );
     setUsers(sortedUsers);
@@ -88,6 +107,8 @@ export default function Table() {
                   <th scope="col">Age</th>
                   <th scope="col">Gender</th>
                   <th scope="col">Country</th>
+                  <th scope="col">Created</th>
+                  <th scope="col">Modified</th>
                   <th scope="col">More Options</th>
                 </tr>
               </thead>
@@ -99,6 +120,8 @@ export default function Table() {
                     <td>{user.age}</td>
                     <td>{user.gender}</td>
                     <td>{user.country}</td>
+                    <td>{user.created}</td>
+                    <td>{user.modified}</td>
                     <td>
                       <div className="dropdown">
                         <button
