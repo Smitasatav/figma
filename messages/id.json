@@ -1,0 +1,17 @@
+{
+    "Index": {
+      "app_title": "Daftar Populasi",
+      "create_button": "Buat",
+      "user_id": "ID",
+      "user_name": "Nama",
+      "user_age": "Usia",
+      "user_gender": "Jenis Kelamin",
+      "user_country": "Negara",
+      "created":"Dibuat",
+      "modified":"Dimodifikasi",
+      "option": "Opsi Lainnya",
+      "edit": "Sunting",
+      "delete": "Hapus"
+    
+    }
+  }

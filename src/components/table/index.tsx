@@ -1,5 +1,6 @@
+"use client";
 import Link from "next/link";
-import { useTranslation } from 'next-i18next';
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { userDef } from "../types";
 import Spinner from "@/components/Spinner";
@@ -7,7 +8,7 @@ import axios from "@/components/api";
 import "./style.css";
 
 export default function Table() {
-  const { t } = useTranslation();
+  const t = useTranslations('Index');
 
   const [users, setUsers] = useState<userDef[]>([]);
   const [loading, setLoading] = useState(true);

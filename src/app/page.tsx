@@ -1,10 +1,5 @@
-"use client";
-import Table from "@/components/table";
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <main>
-    <Table/>
-    </main>
-  );
+export default function RootPage() {
+  redirect('/en');
 }
