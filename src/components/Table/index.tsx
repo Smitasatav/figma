@@ -130,7 +130,7 @@ export default function Table() {
                         ></button>
                         <ul className="dropdown-menu">
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item"
                               href={`/Edit-User/${user._uuid}`}
                             >
@@ -143,7 +143,7 @@ export default function Table() {
                                 }}
                               />
                               Edit
-                            </a>
+                            </Link>
                           </li>
                           <li>
                             <a

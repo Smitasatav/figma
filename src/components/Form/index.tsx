@@ -54,11 +54,13 @@ export default function UserForm({
               <div className="d-flex justify-content-center">
                 <Form
                   className="row g-3 card mt-3 p-3 col-md-6"
-                  style={{ backgroundColor: "antiquewhite" }}
+                  style={{ backgroundColor: "gainsboro" }}
                 >
                   {/* for name */}
                   <div>
-                    <label className="col-sm-2-col-form-label">Name</label>
+                    <label className="col-sm-2-col-form-label">
+                      <b>Name</b>
+                    </label>
                     <Field
                       name="name"
                       placeholder="Name"
@@ -73,7 +75,9 @@ export default function UserForm({
 
                   {/* for age */}
                   <div>
-                    <label className="col-sm-2-col-form-label">Age</label>
+                    <label className="col-sm-2-col-form-label">
+                      <b>Age</b>
+                    </label>
                     <Field
                       name="age"
                       type="number"
@@ -89,10 +93,12 @@ export default function UserForm({
 
                   {/* for gender */}
                   <div>
-                    <label className="col-sm-2-col-form-label">Gender:</label>
+                    <label className="col-sm-2-col-form-label">
+                      <b>Gender</b>
+                    </label>
                     <div>
                       {genders.map((gender) => (
-                        <label key={gender} className="form-check">
+                        <label key={gender} className="form-check col-sm-2">
                           <Field
                             className="form-check-input"
                             type="radio"
@@ -111,7 +117,9 @@ export default function UserForm({
 
                   {/* for country */}
                   <div>
-                    <label className="col-sm-2-col-form-label">Country</label>
+                    <label className="col-sm-2-col-form-label">
+                      <b>Country</b>
+                    </label>
                     <Field
                       name="country"
                       as="select"
