@@ -54,8 +54,13 @@ export default function getSummary() {
 
   console.log(countryCounts, genderData);
 
+  const pageTitle = "Summary";
+
   return (
     <main>
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
       <div className="container">
         <h5 className="text-center mt-3">
           <b>SUMMARY</b>

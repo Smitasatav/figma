@@ -50,120 +50,122 @@ export default function UserForm({
           onSubmit={save}
         >
           {({ errors, touched }) => (
-            <Form>
-              {/* className="row g-3 needs-validation was-validated" */}
-              <div className="col-md-7">
-                {/* for name */}
-                <label className="col-sm-2-col-form-label">Name</label>
-                <Field
-                  name="name"
-                  placeholder="Name"
-                  className={`form-control ${
-                    touched.name && errors.name ? "is-invalid" : ""
-                  }`}
-                  style={{
-                    borderColor: touched.name && errors.name ? "red" : "",
-                  }}
-                />
-                {errors.name && touched.name ? (
-                  <div className="invalid-feedback">{errors.name}</div>
-                ) : null}
-              </div>
-
-              {/* for age */}
-              <div className="col-md-7">
-                <label className="col-sm-2-col-form-label">Age</label>
-                <Field
-                  name="age"
-                  type="number"
-                  placeholder="Age"
-                  className={`form-control ${
-                    touched.age && errors.age ? "is-invalid" : ""
-                  }`}
-                  style={{
-                    borderColor: touched.age && errors.age ? "red" : "",
-                  }}
-                />
-                {errors.age && touched.age ? (
-                  <div className="invalid-feedback">{errors.age}</div>
-                ) : null}
-              </div>
-              {/* for gender */}
-              <div className="col-md-7">
-                <label className="col-sm-2-col-form-label">Gender:</label>
-                <div>
-                  {genders.map((gender) => (
-                    <label key={gender} className="form-check">
-                      <Field
-                        className="form-check-input"
-                        type="radio"
-                        name="gender"
-                        value={gender}
-                      />
-                      {gender}
-                    </label>
-                  ))}
-                </div>
-                {errors.gender && touched.gender ? (
-                  <div>{errors.gender}</div>
-                ) : null}
-                <div className="valid-feedback"></div>
-              </div>
-              {/* for country */}
-              <div className="col-md-7">
-                <label className="col-sm-2-col-form-label">Country</label>
-                <Field
-                  name="country"
-                  as="select"
-                  className={`form-select ${
-                    touched.country && errors.country ? "is-invalid" : ""
-                  }`}
-                  style={{
-                    borderColor: touched.country && errors.country ? "red" : "",
-                  }}
+            <div className="container">
+              <div className="d-flex justify-content-center">
+                <Form
+                  className="row g-3 card mt-3 p-3 col-md-6"
+                  style={{ backgroundColor: "antiquewhite" }}
                 >
-                  <option value="">Select Country</option>
-                  {countries.map((country) => (
-                    <option key={country} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </Field>
-                {errors.country && touched.country ? (
-                  <div className="invalid-feedback" style={{ color: "red" }}>
-                    {errors.country}
+                  {/* for name */}
+                  <div>
+                    <label className="col-sm-2-col-form-label">Name</label>
+                    <Field
+                      name="name"
+                      placeholder="Name"
+                      className={`form-control ${
+                        touched.name && errors.name ? "is-invalid" : ""
+                      }`}
+                    />
+                    {errors.name && touched.name && (
+                      <div className="invalid-feedback">{errors.name}</div>
+                    )}
                   </div>
-                ) : null}
-              </div>
 
-              {/* for buttons */}
-
-              <div className="buttons">
-                <div className="d-flex flex-row mb-3">
-                  <div className=" p-3">
-                    <button type="submit" className="btn btn-primary">
-                      {submitBtnLable}
-                    </button>
+                  {/* for age */}
+                  <div>
+                    <label className="col-sm-2-col-form-label">Age</label>
+                    <Field
+                      name="age"
+                      type="number"
+                      placeholder="Age"
+                      className={`form-control ${
+                        touched.age && errors.age ? "is-invalid" : ""
+                      }`}
+                    />
+                    {errors.age && touched.age ? (
+                      <div className="invalid-feedback">{errors.age}</div>
+                    ) : null}
                   </div>
-                  <div className="p-3">
-                    <button
-                      type="button"
-                      className="btn btn-warning"
-                      // onClick={clearForm}
+
+                  {/* for gender */}
+                  <div>
+                    <label className="col-sm-2-col-form-label">Gender:</label>
+                    <div>
+                      {genders.map((gender) => (
+                        <label key={gender} className="form-check">
+                          <Field
+                            className="form-check-input"
+                            type="radio"
+                            name="gender"
+                            value={gender}
+                          />
+                          {gender}
+                        </label>
+                      ))}
+                    </div>
+                    {errors.gender && touched.gender ? (
+                      <div>{errors.gender}</div>
+                    ) : null}
+                    <div className="valid-feedback"></div>
+                  </div>
+
+                  {/* for country */}
+                  <div>
+                    <label className="col-sm-2-col-form-label">Country</label>
+                    <Field
+                      name="country"
+                      as="select"
+                      className={`form-select ${
+                        touched.country && errors.country ? "is-invalid" : ""
+                      }`}
                     >
-                      CLEAR
-                    </button>
+                      <option value="">Select Country</option>
+                      {countries.map((country) => (
+                        <option key={country} value={country}>
+                          {country}
+                        </option>
+                      ))}
+                    </Field>
+                    {errors.country && touched.country ? (
+                      <div
+                        className="invalid-feedback"
+                        style={{ color: "red" }}
+                      >
+                        {errors.country}
+                      </div>
+                    ) : null}
                   </div>
-                  <div className="p-3 ">
-                    <Link href="/">
-                      <button type="button" className="btn btn-danger">
-                        CANCEL
-                      </button>
-                    </Link>
+
+                  {/* for buttons */}
+
+                  <div className="buttons">
+                    <div className="d-flex flex-row mb-3">
+                      <div className=" p-3">
+                        <button type="submit" className="btn btn-primary">
+                          {submitBtnLable}
+                        </button>
+                      </div>
+                      <div className="p-3">
+                        <button
+                          type="button"
+                          className="btn btn-warning"
+                          // onClick={clearForm}
+                        >
+                          CLEAR
+                        </button>
+                      </div>
+                      <div className="p-3 ">
+                        <Link href="/">
+                          <button type="button" className="btn btn-danger">
+                            CANCEL
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </Form>
               </div>
-            </Form>
+            </div>
           )}
         </Formik>
       )}
