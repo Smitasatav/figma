@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
+import {Link} from "@/i18n";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);

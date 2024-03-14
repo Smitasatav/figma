@@ -56,7 +56,7 @@ export default function UserForm({
               <div className="d-flex justify-content-center">
                 <Form
                   className="row g-3 card mt-3 p-3 col-md-6"
-                  style={{ backgroundColor: "antiquewhite" }}
+                  style={{ backgroundColor: "gainsboro" }}
                 >
                   {/* for name */}
                   <div>
@@ -65,7 +65,7 @@ export default function UserForm({
                     </label>
                     <Field
                       name="name"
-                      placeholder="Name"
+                      placeholder="Enter your name"
                       className={`form-control ${
                         touched.name && errors.name ? "is-invalid" : ""
                       }`}
@@ -83,7 +83,7 @@ export default function UserForm({
                     <Field
                       name="age"
                       type="number"
-                      placeholder="Age"
+                      placeholder="Enter your age"
                       className={`form-control ${
                         touched.age && errors.age ? "is-invalid" : ""
                       }`}

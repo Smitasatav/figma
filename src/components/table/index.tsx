@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import {Link} from "@/i18n";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { userDef } from "../types";
@@ -133,7 +133,7 @@ export default function Table() {
                         ></button>
                         <ul className="dropdown-menu">
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item"
                               href={`/Edit-User/${user._uuid}`}
                             >
@@ -146,7 +146,7 @@ export default function Table() {
                                 }}
                               />
                               {t('edit')}
-                            </a>
+                            </Link>
                           </li>
                           <li>
                             <a
