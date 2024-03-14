@@ -47,7 +47,7 @@ export default function editUser() {
       <Form
         submitBtnLable="Update"
         title="EDIT USER"
-        onSave={save}
+        save={save}
         user={user}
         loading={loading}
       />

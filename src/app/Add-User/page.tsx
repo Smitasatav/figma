@@ -26,7 +26,7 @@ export default function AddUser() {
       <Form
         submitBtnLable="ADD"
         title="ADD USER"
-        onSave={save}
+        save={save}
         loading={loading}
       />
     </main>
