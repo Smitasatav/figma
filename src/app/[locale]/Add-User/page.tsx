@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Form from "@/components/form";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
 import { useRouter } from "next/navigation";
 import Head from "next/head";
+import UserForm from "@/components/form";
+import { useTranslations } from "next-intl";
 
 export default function AddUser() {
   const [loading, setLoading] = useState(false);
@@ -18,14 +19,17 @@ export default function AddUser() {
     router.push("/");
   };
 
+  const t = useTranslations("add_user");
+
+
   return (
     <main>
-      <Head>
-        <title>ADD USER</title>
-      </Head>
-      <Form
-        submitBtnLable="ADD"
-        title="ADD USER"
+     
+        <title>{t("page_title")}</title>
+      
+      <UserForm
+        submitBtnLable={t("sub_leble")}
+        title={t("page_title")}
         save={save}
         loading={loading}
       />

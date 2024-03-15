@@ -1,28 +1,49 @@
 {
-    "Index": {
-      "app_title": "Population List",
-      "create_button": "Create",
-      "user_id": "ID",
-      "user_name": "Name",
-      "user_age": "Age",
-      "user_gender": "Gender",
-      "user_country": "Country",
-      "created":"Created",
-      "modified":"Modified",
-      "option": "More Option",
-      "edit": "Edit",
-      "delete": "Delete"
-    
-    },
-    "Form":{
-      "name":"Name",
-      "age":"Age",
-      "gender":"Gender",
-      "country":"Country",
-      "choose":"Choose...",
-      "clear":"CLEAR",
-      "cancle":"CANCEL",
-      "enter_name":"Enter your name",
-      "enter_age":"Enter your age"
-    }
+  "Navbar": {
+    "heading": "USER PORTAL",
+    "nav_title": "User Portal",
+    "nav_home": "Home",
+    "nav_summary": "Summary"
+  },
+  "Table": {
+    "app_title": "Population List",
+    "create_button": "Create",
+    "search_button":"Search items",
+    "user_id": "ID",
+    "user_name": "Name",
+    "user_age": "Age",
+    "user_gender": "Gender",
+    "user_country": "Country",
+    "created": "Created",
+    "modified": "Modified",
+    "option": "More Option",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "Form": {
+    "name": "Name",
+    "age": "Age",
+    "gender": "Gender",
+    "country": "Country",
+    "choose": "Choose...",
+    "clear": "CLEAR",
+    "cancel": "CANCEL",
+    "enter_name": "Enter your name",
+    "enter_age": "Enter your age"
+  },
+  "summary":{
+    "page_head":"SUMMARY PAGE",
+    "page_title":"SUMMARY",
+    "country":"Country",
+    "count":"Count",
+    "gender":"Gender"
+  },
+  "add_user":{
+    "sub_leble":"ADD",
+    "page_title":"ADD USER"
+  },
+  "edit_user":{
+    "sub_leble":"Update",
+    "page_title":"EDIT USER"
   }
+}

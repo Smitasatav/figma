@@ -1,5 +1,4 @@
 "use client";
-import Form from "@/components/form";
 import axios from "@/components/api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -7,6 +6,8 @@ import { userDef } from "@/components/types";
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import Spinner from "@/components/Spinner";
+import UserForm from "@/components/form";
+import { useTranslations } from "next-intl";
 
 export default function editUser() {
   const [loading, setLoading] = useState(true);
@@ -38,15 +39,18 @@ export default function editUser() {
     setLoading(false);
   }, [id]);
 
+  const t = useTranslations("edit_user");
+
+
   return (
     <main>
-      <Head>
-        <title>EDIT USER</title>
-      </Head>
+      
+        <title>{t("page_title")}</title>
+      
       {/* {loading?<Spinner/>:( */}
-      <Form
-        submitBtnLable="Update"
-        title="EDIT USER"
+      <UserForm
+        submitBtnLable={t("sub_leble")}
+        title={t("page_title")}
         save={save}
         user={user}
         loading={loading}

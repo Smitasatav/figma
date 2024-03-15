@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import Head from "next/head";
 import Link from "next/link";
 import axios from "@/components/api";
@@ -54,15 +55,16 @@ export default function getSummary() {
   };
 
   console.log(countryCounts, genderData);
+  const t = useTranslations("summary");
 
   return (
     <main>
       <Head>
-        <title>SUMMARY PAGE</title>
+        <title>{t("page_head")}</title>
       </Head>
       <div className="container">
         <h5 className="text-center mt-3">
-          <b>SUMMARY</b>
+          <b> {t("page_title")}</b>
         </h5>
         {/* <Link href="/" className=" d-md-flex justify-content-md-end">
           <button className=" btn btn-primary " type="submit">
@@ -73,15 +75,15 @@ export default function getSummary() {
           <Spinner />
         ) : (
           <>
-            <div className="table1 d-flex justify-content-center align-items-center">
+            <div className="table1 d-flex justify-content-center text-center">
               <table
                 className="table table-bordered mt-3"
                 style={{ width: "40%" }}
               >
                 <thead>
                   <tr>
-                    <th scope="col">Country</th>
-                    <th scope="col">Count</th>
+                    <th scope="col">{t("country")}</th>
+                    <th scope="col">{t("count")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -98,15 +100,15 @@ export default function getSummary() {
                 </tbody>
               </table>
             </div>
-            <div className="table1 d-flex justify-content-center align-items-center">
+            <div className="table1 d-flex justify-content-center text-center">
               <table
                 className="table table-bordered mt-5"
                 style={{ width: "40%" }}
               >
                 <thead>
                   <tr>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Count</th>
+                    <th scope="col">{t("gender")}</th>
+                    <th scope="col">{t("count")}</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -12,7 +12,6 @@ interface props {
   submitBtnLable: string;
   title?: string;
   user?: userDef;
-
   loading?: boolean;
   save: (user: userDef) => void; // Define the save function type
 }
@@ -55,7 +54,7 @@ export default function UserForm({
             <div className="container">
               <div className="d-flex justify-content-center">
                 <Form
-                  className="row g-3 card mt-3 p-3 col-md-6"
+                  className="row g-3 card mt-2 p-3 col-md-6"
                   style={{ backgroundColor: "gainsboro" }}
                 >
                   {/* for name */}
@@ -65,7 +64,7 @@ export default function UserForm({
                     </label>
                     <Field
                       name="name"
-                      placeholder="Enter your name"
+                      placeholder={t("enter_name")}
                       className={`form-control ${
                         touched.name && errors.name ? "is-invalid" : ""
                       }`}
@@ -83,7 +82,7 @@ export default function UserForm({
                     <Field
                       name="age"
                       type="number"
-                      placeholder="Enter your age"
+                      placeholder={t("enter_age")}
                       className={`form-control ${
                         touched.age && errors.age ? "is-invalid" : ""
                       }`}
@@ -130,7 +129,7 @@ export default function UserForm({
                       }`}
                     >
                       <option selected disabled value="">
-                        Choose...
+                        {t("choose")}
                       </option>
                       {countries.map((country) => (
                         <option key={country} value={country}>
@@ -151,13 +150,13 @@ export default function UserForm({
                   {/* for buttons */}
 
                   <div className="buttons">
-                    <div className="d-flex flex-row mb-3">
-                      <div className=" p-3">
+                    <div className="d-flex flex-row mb-2">
+                      <div className=" p-2">
                         <button type="submit" className="btn btn-primary">
                           {submitBtnLable}
                         </button>
                       </div>
-                      <div className="p-3">
+                      <div className="p-2">
                         <button
                           type="button"
                           className="btn btn-warning"
@@ -166,10 +165,10 @@ export default function UserForm({
                           {t("clear")}
                         </button>
                       </div>
-                      <div className="p-3 ">
+                      <div className="p-2 ">
                         <Link href="/">
                           <button type="button" className="btn btn-danger">
-                            {t("cancle")}
+                            {t("cancel")}
                           </button>
                         </Link>
                       </div>

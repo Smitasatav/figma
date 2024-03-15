@@ -1,5 +1,5 @@
 "use client";
-import {Link} from "@/i18n";
+import { Link } from "@/i18n";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { userDef } from "../types";
@@ -8,7 +8,7 @@ import axios from "@/components/api";
 import "./style.css";
 
 export default function Table() {
-  const t = useTranslations('Index');
+  const t = useTranslations("Table");
 
   const [users, setUsers] = useState<userDef[]>([]);
   const [loading, setLoading] = useState(true);
@@ -84,35 +84,42 @@ export default function Table() {
   return (
     <main>
       <div className="container">
-        <h5 className="text-center mt-2">{t('app_title')}</h5>
+        <h5 className="text-center mt-2">{t("app_title")}</h5>
         {loading ? (
           <Spinner />
         ) : (
           <>
-            <div className="card col-2 mb-1 mx-auto me-5">
-              <input
-                type="text"
-                placeholder="Search items"
-                value={searchInput}
-                onChange={handleChange}
-              ></input>
+            <div className="d-flex justify-content-between mb-4">
+              <div>
+              <Link href="/Add-User">
+                <button className="btn btn-primary" type="submit">
+                  {t("create_button")}
+                </button>
+              </Link>
+              </div>
+              <div className="input-group justify-content-end">
+                <span className="input-group-text">
+                  <img src="./icons/search.svg" />
+                </span>
+                <input
+                  type="text"
+                  placeholder={t("search_button")}
+                  value={searchInput}
+                  onChange={handleChange}
+                ></input>
+              </div>
             </div>
-            <Link href="/Add-User">
-              <button className="btn btn-primary" type="submit">
-              {t('create_button')}
-              </button>
-            </Link>
             <table className="table mt-3 table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">{t('user_id')}</th>
-                  <th scope="col">{t('user_name')}</th>
-                  <th scope="col">{t('user_age')}</th>
-                  <th scope="col">{t('user_gender')}</th>
-                  <th scope="col">{t('user_country')}</th>
-                  <th scope="col">{t('created')}</th>
-                  <th scope="col">{t('modified')}</th>
-                  <th scope="col">{t('option')}</th>
+                  <th scope="col">{t("user_id")}</th>
+                  <th scope="col">{t("user_name")}</th>
+                  <th scope="col">{t("user_age")}</th>
+                  <th scope="col">{t("user_gender")}</th>
+                  <th scope="col">{t("user_country")}</th>
+                  <th scope="col">{t("created")}</th>
+                  <th scope="col">{t("modified")}</th>
+                  <th scope="col">{t("option")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -145,7 +152,7 @@ export default function Table() {
                                   filter: "invert(100%)",
                                 }}
                               />
-                              {t('edit')}
+                              {t("edit")}
                             </Link>
                           </li>
                           <li>
@@ -161,7 +168,7 @@ export default function Table() {
                                   filter: "invert(100%)",
                                 }}
                               />
-                              {t('delete')}
+                              {t("delete")}
                             </a>
                           </li>
                         </ul>
@@ -189,7 +196,12 @@ export default function Table() {
                 {Array.from({
                   length: Math.ceil(filteredUsers.length / usersPerPage),
                 }).map((_, index) => (
-                  <li key={index} className={`page-item ${currentPage === index + 1 ? "active" : ""}`}>
+                  <li
+                    key={index}
+                    className={`page-item ${
+                      currentPage === index + 1 ? "active" : ""
+                    }`}
+                  >
                     <Link
                       onClick={() => paginate(index + 1)}
                       className="page-link"
