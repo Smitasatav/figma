@@ -97,12 +97,13 @@ export default function Table() {
                 </button>
               </Link>
               </div>
-              <div className="input-group justify-content-end">
+              <div className="input-group justify-content-end" style={{ maxWidth: "210px" }}>
                 <span className="input-group-text">
                   <img src="./icons/search.svg" />
                 </span>
                 <input
                   type="text"
+                  className="form-control"
                   placeholder={t("search_button")}
                   value={searchInput}
                   onChange={handleChange}

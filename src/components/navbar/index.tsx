@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import {Link} from "@/i18n";
+import LocalSwitcher from "../locale-switcher";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +16,7 @@ export default function Navbar() {
   }
   const t = useTranslations("Navbar");
   return (
-    <nav className="navbar navbar-dark bg-dark mb-2" >
+    <nav className="navbar navbar-dark bg-dark mb-3" >
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
         {t("heading")}
@@ -49,6 +50,11 @@ export default function Navbar() {
               <li className="nav-item" onClick={closeMenu}>
                 <Link className="nav-link active" href="/Summary">
                 {t("nav_summary")}
+                </Link>
+              </li>
+              <li className="nav-item" >
+                <Link className="nav-link active" href="/">
+                <LocalSwitcher/>
                 </Link>
               </li>
             </ul>
