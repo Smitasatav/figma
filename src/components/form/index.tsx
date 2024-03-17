@@ -34,6 +34,20 @@ export default function UserForm({
   save,
 }: props) {
   const t = useTranslations("Form");
+
+  const clearForm = () => {
+    const initialValues = {
+      name: "",
+      age: "",
+      gender: "",
+      country: "",
+    };
+    // Reset form using Formik's resetForm function
+    formikRef.current?.resetForm({ values: initialValues });
+  };
+
+  const formikRef = React.useRef<any>(null);
+
   return (
     <main>
       <h3 className="text-center">{title}</h3>
@@ -41,6 +55,7 @@ export default function UserForm({
         <Spinner />
       ) : (
         <Formik
+        innerRef={formikRef}
           initialValues={{
             name: user ? user.name : "",
             age: user ? user.age : "",
@@ -160,7 +175,7 @@ export default function UserForm({
                         <button
                           type="button"
                           className="btn btn-warning"
-                          // onClick={clearForm}
+                          onClick={clearForm}
                         >
                           {t("clear")}
                         </button>
