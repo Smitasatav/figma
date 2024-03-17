@@ -24,6 +24,7 @@ export default function editUser() {
     setLoading(true);
     let res = await axios.get(`/users/${id}`);
     setUser(res.data);
+    console.log(user)
     setLoading(false);
   };
 
@@ -36,17 +37,14 @@ export default function editUser() {
   useEffect(() => {
     setLoading(true);
     fetchData();
-    setLoading(false);
+    // setLoading(false);
   }, [id]);
 
   const t = useTranslations("edit_user");
 
-
   return (
     <main>
-      
-        <title>{t("page_title")}</title>
-      
+      <title>{t("page_title")}</title>
       {/* {loading?<Spinner/>:( */}
       <UserForm
         submitBtnLable={t("sub_leble")}

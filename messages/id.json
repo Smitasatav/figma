@@ -1,7 +1,14 @@
 {
-    "Index": {
+  "Navbar": {
+    "heading": "PORTAL PENGGUNA",
+    "nav_title": "Portal Pengguna",
+    "nav_home": "Beranda",
+    "nav_summary": "Ringkasan"
+  },
+    "Table": {
       "app_title": "Daftar Populasi",
       "create_button": "Buat",
+      "search_button":"Cari item",
       "user_id": "ID",
       "user_name": "Nama",
       "user_age": "Usia",
@@ -13,5 +20,31 @@
       "edit": "Sunting",
       "delete": "Hapus"
     
+    },
+    "Form": {
+      "name": "Nama",
+      "age": "Usia",
+      "gender": "Jenis Kelamin",
+      "country":"Negara",
+      "choose":  "Pilih...",
+      "clear":  "JELAS",
+      "cancel": "BATAL",
+      "enter_name": "Masukkan nama Anda",
+      "enter_age": "Masukkan umur Anda"
+    },
+    "summary":{
+      "page_head":"HALAMAN RINGKASAN",
+      "page_title":"RINGKASAN",
+      "country":"Negara",
+      "count":"Hitungan",
+      "gender":"Jenis Kelamin"
+    },
+    "add_user":{
+      "sub_leble":"TAMBAHKAN",
+      "page_title":"TAMBAHKAN PENGGUNA"
+    },
+    "edit_user":{
+      "sub_leble":"Perbarui",
+      "page_title":"Perbarui"
     }
   }

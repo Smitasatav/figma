@@ -18,9 +18,16 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-dark bg-dark mb-3" >
       <div className="container-fluid">
+      <div className="d-flex justify-content-start">
         <Link className="navbar-brand" href="/">
-        {t("heading")}
+          {t("heading")}
         </Link>
+        <div>
+          <Link className="pt-2" href="/">
+            <LocalSwitcher />
+          </Link>
+          </div>
+        </div>
         <button className="navbar-toggler" type="button" onClick={toggleMenu}>
           <span className="navbar-toggler-icon" />
         </button>
@@ -34,11 +41,11 @@ export default function Navbar() {
             <h5 className="offcanvas-title">
             {t("nav_title")}
             </h5>
-            {/* <button
+            <button
               type="button"
               className="btn-close btn-close-white"
               onClick={toggleMenu}
-            /> */}
+            />
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
@@ -52,11 +59,11 @@ export default function Navbar() {
                 {t("nav_summary")}
                 </Link>
               </li>
-              <li className="nav-item" >
+              {/* <li className="nav-item" >
                 <Link className="nav-link active" href="/">
                 <LocalSwitcher/>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
