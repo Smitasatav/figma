@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import {Link} from "@/i18n";
 import LocalSwitcher from "../locale-switcher";
+import classNames from "classnames";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,9 +33,8 @@ export default function Navbar() {
           <span className="navbar-toggler-icon" />
         </button>
         <div
-          className={`offcanvas offcanvas-end text-bg-dark ${
-            menuOpen ? "show" : ""
-          }`}
+          className={
+            classNames('offcanvas offcanvas-end text-bg-dark' ,{show: menuOpen})}
           tabIndex={-1}
         >
           <div className="offcanvas-header">
@@ -59,11 +59,6 @@ export default function Navbar() {
                 {t("nav_summary")}
                 </Link>
               </li>
-              {/* <li className="nav-item" >
-                <Link className="nav-link active" href="/">
-                <LocalSwitcher/>
-                </Link>
-              </li> */}
             </ul>
           </div>
         </div>

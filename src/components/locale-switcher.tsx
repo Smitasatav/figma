@@ -23,7 +23,8 @@ export default function LocalSwitcher() {
     >
       <option value="en">English</option>
       <option value="hi">Hindi</option>
-      <option value="id">indonesian</option>
+      <option value="id">Indonesian</option>
+      <option value="es">Español</option>
     </select></div>
   );
 }

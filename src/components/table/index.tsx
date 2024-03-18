@@ -1,6 +1,7 @@
 "use client";
 import { Link } from "@/i18n";
 import { useTranslations } from "next-intl";
+import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { userDef } from "../types";
 import Spinner from "@/components/Spinner";
@@ -183,51 +184,47 @@ export default function Table() {
             <nav style={{ display: "flex", justifyContent: "center" }}>
               <ul className="pagination">
                 <li
-                  className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+                  className={
+                    classNames('page-item',{disabled:currentPage === 1})}
                 >
-                  <a
+                  <Link
                     className="page-link"
                     href="#"
                     onClick={() => paginate(currentPage - 1)}
-                    aria-label="Previous"
                   >
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
+                    <span>&laquo;</span>
+                  </Link>
                 </li>
                 {Array.from({
                   length: Math.ceil(filteredUsers.length / usersPerPage),
                 }).map((_, index) => (
                   <li
                     key={index}
-                    className={`page-item ${
-                      currentPage === index + 1 ? "active" : ""
-                    }`}
+                    className={
+                      classNames('page-item',{active:currentPage === index + 1})
+                   }
                   >
-                    <Link
+                    <button
                       onClick={() => paginate(index + 1)}
                       className="page-link"
-                      href="#"
                     >
                       {index + 1}
-                    </Link>
+                    </button>
                   </li>
                 ))}
                 <li
-                  className={`page-item ${
-                    currentPage ===
-                    Math.ceil(filteredUsers.length / usersPerPage)
-                      ? "disabled"
-                      : ""
-                  }`}
+                  className={
+                    classNames('page-item',{disabled:currentPage ===
+                      Math.ceil(filteredUsers.length / usersPerPage)})
+                    }
                 >
-                  <a
+                  <Link
                     className="page-link"
                     href="#"
                     onClick={() => paginate(currentPage + 1)}
-                    aria-label="Next"
                   >
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
+                    <span>&raquo;</span>
+                  </Link>
                 </li>
               </ul>
             </nav>

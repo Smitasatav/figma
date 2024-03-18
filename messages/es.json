@@ -1,0 +1,49 @@
+{
+    "Navbar": {
+      "heading": "PORTAL DE USUARIO",
+      "nav_title": "Portal de usuario",
+      "nav_home": "Hogar",
+      "nav_summary": "Resumen"
+    },
+    "Table": {
+      "app_title": "LISTA DE POBLACIÓN",
+      "create_button": "Crear",
+      "search_button":"Buscar elementos",
+      "user_id": "ID",
+      "user_name": "Nombre",
+      "user_age": "Edad",
+      "user_gender": "Género",
+      "user_country": "País",
+      "created": "creada",
+      "modified": "Modificada",
+      "option": "Más opción",
+      "edit": "Editar",
+      "delete": "Borrar"
+    },
+    "Form": {
+      "name": "Nombre",
+      "age": "Edad",
+      "gender": "Género",
+      "country": "País",
+      "choose": "Elegir...",
+      "clear": "CLARA",
+      "cancel": "CANCELAR",
+      "enter_name": "Introduzca su nombre",
+      "enter_age": "Introduzca su edad"
+    },
+    "summary":{
+      "page_head":"PÁGINA DE RESUMEN",
+      "page_title":"RESUMEN",
+      "country":"País",
+      "count":"Contar",
+      "gender":"Género"
+    },
+    "add_user":{
+      "sub_leble":"AGREGAR",
+      "page_title":"AGREGAR USUARIO"
+    },
+    "edit_user":{
+      "sub_leble":"Actualizar",
+      "page_title":"EDITAR USUARIO"
+    }
+  }

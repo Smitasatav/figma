@@ -13,20 +13,16 @@ export default function AddUser() {
 
   const save = async (user: userDef) => {
     setLoading(true);
-    const res = await axios.post("/users", [user]);
-    console.log(user);
+    await axios.post("/users", [user]);
     setLoading(false);
     router.push("/");
   };
 
   const t = useTranslations("add_user");
 
-
   return (
     <main>
-     
-        <title>{t("page_title")}</title>
-      
+      <title>{t("page_title")}</title>
       <UserForm
         submitBtnLable={t("sub_leble")}
         title={t("page_title")}

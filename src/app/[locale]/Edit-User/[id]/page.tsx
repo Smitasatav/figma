@@ -35,9 +35,7 @@ export default function editUser() {
     router.push("/");
   };
   useEffect(() => {
-    setLoading(true);
     fetchData();
-    // setLoading(false);
   }, [id]);
 
   const t = useTranslations("edit_user");
