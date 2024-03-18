@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import Form from "@/components/Form";
-import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -37,6 +37,7 @@ export default function EditUser() {
   }, [id]);
 
   const pageTitle = "Edit Task";
+  const t = useTranslations("edit_user");
 
   return (
     <main>
@@ -44,8 +45,8 @@ export default function EditUser() {
         <title>{pageTitle}</title>
       </Head>
       <Form
-        submitBtnLable="Update"
-        title=" EDIT YOUR TASK"
+        submitBtnLable={t("sub_label")}
+        title={t("page_title")}
         save={save}
         user={user}
         loading={loading}

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslations } from "next-intl";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Link from "next/link";
@@ -33,6 +34,7 @@ export default function UserForm({
   loading,
   save,
 }: props) {
+  const t = useTranslations("Form");
   return (
     <main>
       <h3 className="text-center">{title}</h3>
@@ -59,11 +61,11 @@ export default function UserForm({
                   {/* for name */}
                   <div>
                     <label className="col-sm-2-col-form-label">
-                      <b>Name</b>
+                      <b>{t("name")}</b>
                     </label>
                     <Field
                       name="name"
-                      placeholder="Name"
+                      placeholder={t("enter_name")}
                       className={`form-control ${
                         touched.name && errors.name ? "is-invalid" : ""
                       }`}
@@ -76,12 +78,12 @@ export default function UserForm({
                   {/* for age */}
                   <div>
                     <label className="col-sm-2-col-form-label">
-                      <b>Age</b>
+                      <b>{t("age")}</b>
                     </label>
                     <Field
                       name="age"
                       type="number"
-                      placeholder="Age"
+                      placeholder={t("enter_age")}
                       className={`form-control ${
                         touched.age && errors.age ? "is-invalid" : ""
                       }`}
@@ -94,7 +96,7 @@ export default function UserForm({
                   {/* for gender */}
                   <div>
                     <label className="col-sm-2-col-form-label">
-                      <b>Gender</b>
+                      <b>{t("gender")}</b>
                     </label>
                     <div>
                       {genders.map((gender) => (
@@ -118,7 +120,7 @@ export default function UserForm({
                   {/* for country */}
                   <div>
                     <label className="col-sm-2-col-form-label">
-                      <b>Country</b>
+                      <b>{t("country")}</b>
                     </label>
                     <Field
                       name="country"
@@ -159,13 +161,13 @@ export default function UserForm({
                           className="btn btn-warning"
                           // onClick={clearForm}
                         >
-                          CLEAR
+                          {t("clear")}
                         </button>
                       </div>
                       <div className="p-3 ">
                         <Link href="/">
                           <button type="button" className="btn btn-danger">
-                            CANCEL
+                            {t("cancel")}
                           </button>
                         </Link>
                       </div>

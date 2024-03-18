@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
+
 import { userDef } from "../types";
 import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
@@ -77,39 +79,52 @@ export default function Table() {
 
   // Logic to change page
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
+  const t = useTranslations("Table");
   return (
     <main>
       <div className="container">
-        <h5 className="text-center mt-2">Population List</h5>
+        <h5 className="text-center mt-2">
+          <b>{t("app_title")}</b>
+        </h5>
         {loading ? (
           <Spinner />
         ) : (
           <>
-            <div className="card col-2 mb-1 mx-auto me-5">
-              <input
-                type="text"
-                placeholder="Search items"
-                value={searchInput}
-                onChange={handleChange}
-              ></input>
+            <div className="d-flex justify-content-between mb-4">
+              <div>
+                <Link href="/Add-User">
+                  <button className="btn btn-primary" type="submit">
+                    {t("create_button")}
+                  </button>
+                </Link>
+              </div>
+              <div
+                className="input-group justify-content-end"
+                style={{ maxWidth: "210px" }}
+              >
+                <span className="input-group-text">
+                  <img src="./icons/search.svg" />
+                </span>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder={t("search_button")}
+                  value={searchInput}
+                  onChange={handleChange}
+                ></input>
+              </div>
             </div>
-            <Link href="/Add-User">
-              <button className="btn btn-primary" type="submit">
-                Create
-              </button>
-            </Link>
-            <table className="table mt-3 table-bordered">
+            <table className="table mt-3 table-bordered text-center">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Gender</th>
-                  <th scope="col">Country</th>
-                  <th scope="col">Created</th>
-                  <th scope="col">Modified</th>
-                  <th scope="col">More Options</th>
+                  <th scope="col">{t("user_id")}</th>
+                  <th scope="col">{t("user_name")}</th>
+                  <th scope="col">{t("user_age")}</th>
+                  <th scope="col">{t("user_gender")}</th>
+                  <th scope="col">{t("user_country")}</th>
+                  <th scope="col">{t("created")}</th>
+                  <th scope="col">{t("modified")}</th>
+                  <th scope="col">{t("option")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -142,7 +157,7 @@ export default function Table() {
                                   filter: "invert(100%)",
                                 }}
                               />
-                              Edit
+                              {t("edit")}
                             </Link>
                           </li>
                           <li>
@@ -158,7 +173,7 @@ export default function Table() {
                                   filter: "invert(100%)",
                                 }}
                               />
-                              Delete
+                              {t("delete")}
                             </a>
                           </li>
                         </ul>

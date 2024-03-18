@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
@@ -54,16 +55,16 @@ export default function getSummary() {
 
   console.log(countryCounts, genderData);
 
-  const pageTitle = "Summary";
+  const t = useTranslations("summary");
 
   return (
     <main>
       <Head>
-        <title>{pageTitle}</title>
+        <title>{t("page_head")} </title>
       </Head>
       <div className="container">
         <h5 className="text-center mt-3">
-          <b>SUMMARY</b>
+          <b>{t("page_title")}</b>
         </h5>
         {/* <Link href="/" className=" d-md-flex justify-content-md-end">
           <button className=" btn btn-primary " type="submit">
@@ -81,8 +82,8 @@ export default function getSummary() {
               >
                 <thead>
                   <tr>
-                    <th scope="col">Country</th>
-                    <th scope="col">Count</th>
+                    <th scope="col">{t("country")}</th>
+                    <th scope="col">{t("count")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -106,8 +107,8 @@ export default function getSummary() {
               >
                 <thead>
                   <tr>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Count</th>
+                    <th scope="col">{t("gender")}</th>
+                    <th scope="col">{t("count")}</th>
                   </tr>
                 </thead>
                 <tbody>
