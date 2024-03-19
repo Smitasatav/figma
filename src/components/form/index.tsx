@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import Link from "next/link";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
-import { countries, genders } from "./config.js";
+import { countries } from "./config.js";
 import classNames from "classnames";
 // import "./style.css";
 
@@ -35,6 +35,11 @@ export default function UserForm({
   save,
 }: props) {
   const t = useTranslations("Form");
+  const genders = [
+    { value: "Male", label: t("genders.male") },
+    { value: "Female", label: t("genders.female") },
+    { value: "Other", label: t("genders.other") },
+  ];
 
   const clearForm = () => {
     const initialValues = {
@@ -113,14 +118,14 @@ export default function UserForm({
                     </label>
                     <div>
                       {genders.map((gender) => (
-                        <label key={gender} className="form-check">
+                        <label key={gender.value} className="form-check">
                           <Field
                             className="form-check-input"
                             type="radio"
                             name="gender"
-                            value={gender}
+                            value={gender.value}
                           />
-                          {gender}
+                          {gender.label}
                         </label>
                       ))}
                     </div>

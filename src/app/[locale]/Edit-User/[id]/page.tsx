@@ -24,7 +24,6 @@ export default function editUser() {
     setLoading(true);
     let res = await axios.get(`/users/${id}`);
     setUser(res.data);
-    console.log(user)
     setLoading(false);
   };
 

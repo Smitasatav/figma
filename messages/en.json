@@ -29,7 +29,12 @@
     "clear": "CLEAR",
     "cancel": "CANCEL",
     "enter_name": "Enter your name",
-    "enter_age": "Enter your age"
+    "enter_age": "Enter your age",
+    "genders": {
+      "male": "Male",
+      "female": "Female",
+      "other": "Other"
+    }
   },
   "summary":{
     "page_head":"SUMMARY PAGE",
