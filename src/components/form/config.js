@@ -4,7 +4,7 @@ const countries = [
   "Denmark",
   "South Africa",
   "Germany",
-  "Barcelona",
+  "Barcelona"
 ];
 
 const genders = ["Male", "Female", "Other"];

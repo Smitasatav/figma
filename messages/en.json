@@ -18,7 +18,8 @@
     "modified": "Modified",
     "option": "More Option",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "locale":"en-IN"
   },
   "Form": {
     "name": "Name",

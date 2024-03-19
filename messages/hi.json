@@ -18,7 +18,8 @@
     "modified": "संशोधित",
     "option": "अधिक विकल्प",
     "edit": "संपादित करें",
-    "delete": "हटाएं"
+    "delete": "हटाएं",
+    "locale":"hi-IN"
   },
   "Form": {
     "name": "नाम",

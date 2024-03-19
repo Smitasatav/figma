@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { userDef } from "../types";
 import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
+import Pagination from "@/components/pagination";
 import "./style.css";
 
 export default function Table() {
@@ -29,11 +30,11 @@ export default function Table() {
         _modified: number;
       }) => {
         user.created = new Date(user._created * 1000).toLocaleDateString(
-          "en-IN",
+          t("locale"),
           { day: "numeric", month: "long", year: "numeric" }
         );
         user.modified = new Date(user._modified * 1000).toLocaleDateString(
-          "en-IN",
+          t("locale"),
           { day: "numeric", month: "long", year: "numeric" }
         );
       }
@@ -92,13 +93,16 @@ export default function Table() {
           <>
             <div className="d-flex justify-content-between mb-4">
               <div>
-              <Link href="/Add-User">
-                <button className="btn btn-primary" type="submit">
-                  {t("create_button")}
-                </button>
-              </Link>
+                <Link href="/Add-User">
+                  <button className="btn btn-primary" type="submit">
+                    {t("create_button")}
+                  </button>
+                </Link>
               </div>
-              <div className="input-group justify-content-end" style={{ maxWidth: "210px" }}>
+              <div
+                className="input-group justify-content-end"
+                style={{ maxWidth: "210px" }}
+              >
                 <span className="input-group-text">
                   <img src="./icons/search.svg" />
                 </span>
@@ -181,7 +185,7 @@ export default function Table() {
               </tbody>
             </table>
             {/* Pagination controls */}
-            <nav style={{ display: "flex", justifyContent: "center" }}>
+            {/* <nav style={{ display: "flex", justifyContent: "center" }}>
               <ul className="pagination">
                 <li
                   className={
@@ -227,7 +231,14 @@ export default function Table() {
                   </Link>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
+            {!loading && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={Math.ceil(filteredUsers.length / usersPerPage)}
+                paginate={paginate}
+              />
+            )}
           </>
         )}
       </div>
