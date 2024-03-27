@@ -19,7 +19,8 @@
     "option": "More Option",
     "edit": "Edit",
     "delete": "Delete",
-    "locale":"en-IN"
+    "locale":"en-IN",
+    "pagination_lang":"en"
   },
   "Form": {
     "name": "Name",

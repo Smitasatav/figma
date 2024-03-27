@@ -14,20 +14,22 @@ export default function LocalSwitcher() {
   const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const nextLocale = e.target.value;
     startTransition(() => {
-      router.replace(`/${nextLocale}/${pathname}`);
+      router.replace(`/${nextLocale}`);
     });
   };
   return (
-    <div className="d-flex pt-1" style={{width:"60px",height:"35px"}}>
-    <img src="./icons/language.svg" /><select
-      defaultValue={localActive}
-      onChange={onSelectChange}
-      disabled={isPending}
-    >
-      <option value="en">English</option>
-      <option value="hi">Hindi</option>
-      <option value="id">Indonesian</option>
-      <option value="es">Español</option>
-    </select></div>
+    <div className="d-flex pt-1" style={{ width: "60px", height: "35px" }}>
+      <img src="./icons/language.svg" />
+      <select
+        defaultValue={localActive}
+        onChange={onSelectChange}
+        disabled={isPending}
+      >
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="id">Indonesian</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
   );
 }

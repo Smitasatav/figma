@@ -74,6 +74,8 @@ export default function Table() {
         )
       : users;
 
+  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+
   // Logic to calculate pagination
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -234,9 +236,11 @@ export default function Table() {
             </nav> */}
             {!loading && (
               <Pagination
+                key="pagination"
                 currentPage={currentPage}
-                totalPages={Math.ceil(filteredUsers.length / usersPerPage)}
+                totalPages={totalPages}
                 paginate={paginate}
+                locale={t("pagination_lang")}
               />
             )}
           </>
